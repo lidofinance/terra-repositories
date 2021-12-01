@@ -49,24 +49,18 @@ func (s *RepositoryColumbus5) Init(ctx context.Context, consAddr string) error {
 }
 
 func (s *RepositoryColumbus5) GetMissedBlockCounter() float64 {
-	if s.signingInfo != nil {
-		// No blocks is sent as "", not as "0".
-		if s.signingInfo.MissedBlocksCounter != "" {
-			// If the current block is greater than minHeight and the validator's MissedBlocksCounter is
-			// greater than maxMissed, they will be slashed. So numMissedBlocks > 0 does not mean that we
-			// are already slashed, but is alarming. Note: Liveness slashes do NOT lead to a tombstoning.
-			// https://docs.terra.money/dev/spec-slashing.html#begin-block
-			numMissedBlocks, err := strconv.ParseInt(s.signingInfo.MissedBlocksCounter, 10, 64)
-			if err != nil {
-				s.logger.Errorf("failed to Parse `missed_blocks_counter:`: %s", err)
-			} else {
-				if numMissedBlocks > 0 {
-					return float64(numMissedBlocks)
-				}
-			}
-		}
+	if s.signingInfo == nil || s.signingInfo.MissedBlocksCounter == "" { // no blocks is sent as "", not as "0".
+		return 0
 	}
-	return 0
+	// If the current block is greater than minHeight and the validator's MissedBlocksCounter is
+	// greater than maxMissed, they will be slashed. So numMissedBlocks > 0 does not mean that we
+	// are already slashed, but is alarming. Note: Liveness slashes do NOT lead to a tombstoning.
+	// https://docs.terra.money/dev/spec-slashing.html#begin-block
+	numMissedBlocks, err := strconv.ParseFloat(s.signingInfo.MissedBlocksCounter, 64)
+	if err != nil {
+		s.logger.Errorf("failed to Parse `missed_blocks_counter:`: %s", err)
+	}
+	return numMissedBlocks
 }
 
 func (s *RepositoryColumbus5) GetTombstoned() bool {
