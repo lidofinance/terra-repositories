@@ -14,23 +14,16 @@ import (
 	cosmostypes "github.com/cosmos/cosmos-sdk/types"
 )
 
-type V2ValidatorsRepositoryConfig struct {
-	ValidatorsRegistryContract string
-	NetworkGeneration          string
-}
-
-func NewV2ValidatorsRepository(cfg *V2ValidatorsRepositoryConfig, apiClient *client.TerraRESTApis) *V2ValidatorsRepository {
+func NewV2ValidatorsRepository(valRegistryContract string, apiClient *client.TerraRESTApis) *V2ValidatorsRepository {
 	return &V2ValidatorsRepository{
-		validatorsRegistryContract: cfg.ValidatorsRegistryContract,
+		validatorsRegistryContract: valRegistryContract,
 		apiClient:                  apiClient,
-		networkGeneration:          cfg.NetworkGeneration,
 	}
 }
 
 type V2ValidatorsRepository struct {
 	validatorsRegistryContract string
 	apiClient                  *client.TerraRESTApis
-	networkGeneration          string
 }
 
 func (r *V2ValidatorsRepository) GetValidatorsAddresses(ctx context.Context) ([]string, error) {
@@ -91,7 +84,7 @@ func (r *V2ValidatorsRepository) GetValidatorInfo(ctx context.Context, address s
 		return ValidatorInfo{}, fmt.Errorf("failed to parse float validator's comission rate: %w", err)
 	}
 
-	consPubKeyAddress, err := GetPubKeyIdentifier(r.networkGeneration, validatorInfoResponse.GetPayload().Result.ConsensusPubkey)
+	consPubKeyAddress, err := GetPubKeyIdentifier(validatorInfoResponse.GetPayload().Result.ConsensusPubkey)
 	if err != nil {
 		return ValidatorInfo{}, fmt.Errorf("failed to extract identifier from payload: %w", err)
 	}

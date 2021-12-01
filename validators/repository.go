@@ -15,9 +15,6 @@ import (
 
 const (
 	Bech32TerraValConsPrefix = "terravalcons"
-
-	NetworkGenerationColumbus4 = "columbus-4"
-	NetworkGenerationColumbus5 = "columbus-5"
 )
 
 type ValidatorsRepository interface {
@@ -25,66 +22,35 @@ type ValidatorsRepository interface {
 	GetValidatorInfo(ctx context.Context, address string) (ValidatorInfo, error)
 }
 
-func GetPubKeyIdentifier(networkGeneration string, pubkey interface{}) (string, error) {
-	switch networkGeneration {
-	case NetworkGenerationColumbus4:
-		// columbus4 ConsensusPubkey is just a string
-		pk, ok := pubkey.(string)
-		if !ok {
-			return "", fmt.Errorf("failed to cast pubkey interface to string: %+v", pubkey)
-		}
-		return pk, nil
-	case NetworkGenerationColumbus5:
-		// columbus5 ConsensusPubkey is a struct
-		// "consensus_pubkey": {
-		//      "type": "tendermint/PubKeyEd25519",
-		//      "value": "EAI7kGuMo6BG1poseFcoMiSa4vHmXcYM4VCpFeIMncw="
-		//    }
-		pk, ok := pubkey.(map[string]interface{})
-		if !ok {
-			return "", fmt.Errorf("failed to cast pubkey interface to map[string]string: %+v", pubkey)
-		}
-		pubkeyValue, ok := pk["value"].(string)
-		if !ok {
-			return "", fmt.Errorf("failed to get pubkey's value from data struct: %+v", pk)
-		}
-		key, err := base64.StdEncoding.DecodeString(pubkeyValue)
-		if err != nil {
-			return "", fmt.Errorf("failed to decode validator's ConsensusPubkey: %w", err)
-		}
-
-		pub := &ed25519.PubKey{Key: key}
-
-		consPubKeyAddress, err := bech32.ConvertAndEncode(Bech32TerraValConsPrefix, pub.Address())
-		if err != nil {
-			return "", fmt.Errorf("failed to convert validator's ConsensusPubkeyAddress to bech32: %w", err)
-		}
-		return consPubKeyAddress, nil
-
-	default:
-		panic("unknown network generation. available variants: columbus-4 or columbus-5")
+func GetPubKeyIdentifier(pubkey interface{}) (string, error) {
+	pk, ok := pubkey.(map[string]interface{})
+	if !ok {
+		return "", fmt.Errorf("failed to cast pubkey interface to map[string]string: %+v", pubkey)
 	}
+	pubkeyValue, ok := pk["value"].(string)
+	if !ok {
+		return "", fmt.Errorf("failed to get pubkey's value from data struct: %+v", pk)
+	}
+	key, err := base64.StdEncoding.DecodeString(pubkeyValue)
+	if err != nil {
+		return "", fmt.Errorf("failed to decode validator's ConsensusPubkey: %w", err)
+	}
+
+	pub := &ed25519.PubKey{Key: key}
+
+	consPubKeyAddress, err := bech32.ConvertAndEncode(Bech32TerraValConsPrefix, pub.Address())
+	if err != nil {
+		return "", fmt.Errorf("failed to convert validator's ConsensusPubkeyAddress to bech32: %w", err)
+	}
+	return consPubKeyAddress, nil
 }
 
-// GetValConsAddr - get valconsaddr from pubkeyidentifier
-// pubkeyidentifier is either valconspub for columbus4 or valcons for columbus5
-func GetValConsAddr(networkGeneration string, pubkeyidentifier string) (string, error) {
-	switch networkGeneration {
-	case NetworkGenerationColumbus4:
-		valconsAddr, err := ValConsPubToAddr(pubkeyidentifier)
-		if err != nil {
-			return "", fmt.Errorf("failed to convert valconspub(%s) to valconsaddr: %w", pubkeyidentifier, err)
-		}
-		return valconsAddr, nil
-	case NetworkGenerationColumbus5:
-		valconsAddr, err := ValConsToAddr(pubkeyidentifier)
-		if err != nil {
-			return "", fmt.Errorf("failed to convert valcons(%s) to valconsaddr: %w", pubkeyidentifier, err)
-		}
-		return valconsAddr, nil
-	default:
-		panic("unknown network generation. available variants: columbus-4 or columbus-5")
+func GetValConsAddr(valcons string) (string, error) {
+	valconsAddr, err := ValConsToAddr(valcons)
+	if err != nil {
+		return "", fmt.Errorf("failed to convert valcons(%s) to valconsaddr: %w", valcons, err)
 	}
+	return valconsAddr, nil
 }
 
 func ValConsToAddr(valcons string) (string, error) {
