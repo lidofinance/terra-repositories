@@ -57,7 +57,7 @@ func (r *FCDRepo) FetchVoting(ctx context.Context) ([]*models.GetProposalListRes
 	return r.fetch(ctx, VotingStatus)
 }
 
-// FetchDeposit fetches proposals with voting status
+// FetchDeposit fetches proposals with deposit status
 func (r *FCDRepo) FetchDeposit(ctx context.Context) ([]*models.GetProposalListResultProposals, error) {
 	return r.fetch(ctx, DepositStatus)
 }
