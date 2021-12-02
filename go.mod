@@ -14,6 +14,7 @@ require (
 	github.com/cespare/xxhash v1.1.0 // indirect
 	github.com/cespare/xxhash/v2 v2.1.1 // indirect
 	github.com/confio/ics23/go v0.6.6 // indirect
+	github.com/cosmos/cosmos-sdk v0.44.4
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/dgraph-io/badger/v2 v2.2007.2 // indirect
 	github.com/dgraph-io/ristretto v0.0.3 // indirect
@@ -30,6 +31,7 @@ require (
 	github.com/go-openapi/loads v0.21.0 // indirect
 	github.com/go-openapi/runtime v0.21.0 // indirect
 	github.com/go-openapi/spec v0.20.4 // indirect
+	github.com/go-openapi/strfmt v0.21.1
 	github.com/go-openapi/swag v0.19.15 // indirect
 	github.com/go-openapi/validate v0.20.3 // indirect
 	github.com/go-stack/stack v1.8.0 // indirect
@@ -46,6 +48,7 @@ require (
 	github.com/jmhodges/levigo v1.0.0 // indirect
 	github.com/josharian/intern v1.0.0 // indirect
 	github.com/libp2p/go-buffer-pool v0.0.2 // indirect
+	github.com/lidofinance/terra-fcd-rest-client v0.0.0-20211201113927-d4e18785c843
 	github.com/magiconair/properties v1.8.5 // indirect
 	github.com/mailru/easyjson v0.7.6 // indirect
 	github.com/matttproud/golang_protobuf_extensions v1.0.1 // indirect
@@ -61,6 +64,7 @@ require (
 	github.com/prometheus/common v0.29.0 // indirect
 	github.com/prometheus/procfs v0.6.0 // indirect
 	github.com/sasha-s/go-deadlock v0.2.1-0.20190427202633-1595213edefa // indirect
+	github.com/sirupsen/logrus v1.8.1
 	github.com/spf13/afero v1.6.0 // indirect
 	github.com/spf13/cast v1.3.1 // indirect
 	github.com/spf13/cobra v1.2.1 // indirect
@@ -70,6 +74,8 @@ require (
 	github.com/subosito/gotenv v1.2.0 // indirect
 	github.com/syndtr/goleveldb v1.0.1-0.20200815110645-5c35d600f0ca // indirect
 	github.com/tecbot/gorocksdb v0.0.0-20191217155057-f0fad39f321c // indirect
+	github.com/tendermint/go-amino v0.16.0
+	github.com/tendermint/tendermint v0.34.14
 	github.com/tendermint/tm-db v0.6.4 // indirect
 	go.etcd.io/bbolt v1.3.5 // indirect
 	go.mongodb.org/mongo-driver v1.7.5 // indirect
@@ -95,12 +101,3 @@ replace github.com/gogo/protobuf => github.com/regen-network/protobuf v1.3.3-alp
 replace github.com/tendermint/tendermint => github.com/tendermint/tendermint v0.34.12
 
 replace github.com/99designs/keyring => github.com/cosmos/keyring v1.1.7-0.20210622111912-ef00f8ac3d76
-
-require (
-	github.com/cosmos/cosmos-sdk v0.44.4
-	github.com/go-openapi/strfmt v0.21.1
-	github.com/lidofinance/terra-fcd-rest-client v0.0.0-20211201113927-d4e18785c843
-	github.com/sirupsen/logrus v1.8.1
-	github.com/tendermint/go-amino v0.16.0
-	github.com/tendermint/tendermint v0.34.14
-)
