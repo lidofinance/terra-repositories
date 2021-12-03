@@ -74,7 +74,7 @@ func (r *V2ValidatorsRepository) GetValidatorInfo(ctx context.Context, address s
 		return ValidatorInfo{}, fmt.Errorf("failed to validate ValidatorInfo for validator %s: %w", address, err)
 	}
 
-	commissionRate, err := cosmostypes.NewDecFromStr(validatorInfoResponse.GetPayload().Result.Commission.Rate)
+	commissionRate, err := cosmostypes.NewDecFromStr(validatorInfoResponse.GetPayload().Result.Commission.CommissionRates.Rate)
 	if err != nil {
 		return ValidatorInfo{}, fmt.Errorf("failed to parse validator's comission rate: %w", err)
 	}
