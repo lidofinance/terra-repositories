@@ -7,9 +7,10 @@ import (
 	"fmt"
 	"strings"
 
+	"github.com/lidofinance/terra-fcd-rest-client/columbus-5/client/staking"
+
 	"github.com/cosmos/cosmos-sdk/crypto/keys/ed25519"
 	"github.com/cosmos/cosmos-sdk/types/bech32"
-	"github.com/lidofinance/terra-fcd-rest-client/v5/client/staking"
 	amino "github.com/tendermint/go-amino"
 	"github.com/tendermint/tendermint/crypto"
 )

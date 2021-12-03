@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"strconv"
 
-	"github.com/lidofinance/terra-fcd-rest-client/v5/client"
-	"github.com/lidofinance/terra-fcd-rest-client/v5/client/query"
+	"github.com/lidofinance/terra-fcd-rest-client/columbus-5/client"
+	"github.com/lidofinance/terra-fcd-rest-client/columbus-5/client/query"
 
 	"github.com/sirupsen/logrus"
 )

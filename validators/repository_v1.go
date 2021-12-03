@@ -7,9 +7,9 @@ import (
 
 	"github.com/lidofinance/terra-repositories/utils"
 
-	"github.com/lidofinance/terra-fcd-rest-client/v5/client"
-	"github.com/lidofinance/terra-fcd-rest-client/v5/client/staking"
-	"github.com/lidofinance/terra-fcd-rest-client/v5/client/wasm"
+	"github.com/lidofinance/terra-fcd-rest-client/columbus-5/client"
+	"github.com/lidofinance/terra-fcd-rest-client/columbus-5/client/staking"
+	"github.com/lidofinance/terra-fcd-rest-client/columbus-5/client/wasm"
 
 	cosmostypes "github.com/cosmos/cosmos-sdk/types"
 )

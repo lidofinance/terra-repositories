@@ -4,8 +4,8 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/lidofinance/terra-fcd-rest-client/v5/client"
-	"github.com/lidofinance/terra-fcd-rest-client/v5/client/query"
+	"github.com/lidofinance/terra-fcd-rest-client/columbus-5/client"
+	"github.com/lidofinance/terra-fcd-rest-client/columbus-5/client/query"
 
 	"github.com/cosmos/cosmos-sdk/types"
 	"github.com/go-openapi/strfmt"

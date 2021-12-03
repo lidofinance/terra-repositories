@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"strconv"
 
-	"github.com/lidofinance/terra-fcd-rest-client/v5/client"
-	"github.com/lidofinance/terra-fcd-rest-client/v5/client/governance"
-	"github.com/lidofinance/terra-fcd-rest-client/v5/models"
+	"github.com/lidofinance/terra-fcd-rest-client/columbus-5/client"
+	"github.com/lidofinance/terra-fcd-rest-client/columbus-5/client/governance"
+	"github.com/lidofinance/terra-fcd-rest-client/columbus-5/models"
 )
 
 var (
