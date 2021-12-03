@@ -9,6 +9,7 @@ import (
 
 	"github.com/cosmos/cosmos-sdk/crypto/keys/ed25519"
 	"github.com/cosmos/cosmos-sdk/types/bech32"
+	"github.com/lidofinance/terra-fcd-rest-client/v5/client/staking"
 	amino "github.com/tendermint/go-amino"
 	"github.com/tendermint/tendermint/crypto"
 )
@@ -22,16 +23,8 @@ type ValidatorsRepository interface {
 	GetValidatorInfo(ctx context.Context, address string) (ValidatorInfo, error)
 }
 
-func GetPubKeyIdentifier(pubkey interface{}) (string, error) {
-	pk, ok := pubkey.(map[string]interface{})
-	if !ok {
-		return "", fmt.Errorf("failed to cast pubkey interface to map[string]string: %+v", pubkey)
-	}
-	pubkeyValue, ok := pk["value"].(string)
-	if !ok {
-		return "", fmt.Errorf("failed to get pubkey's value from data struct: %+v", pk)
-	}
-	key, err := base64.StdEncoding.DecodeString(pubkeyValue)
+func GetPubKeyIdentifier(conspubkey *staking.GetStakingValidatorsValidatorAddrOKBodyResultConsensusPubkey) (string, error) {
+	key, err := base64.StdEncoding.DecodeString(conspubkey.Value)
 	if err != nil {
 		return "", fmt.Errorf("failed to decode validator's ConsensusPubkey: %w", err)
 	}
