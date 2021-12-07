@@ -1,0 +1,91 @@
+{
+    "id": "4",
+    "proposer": {
+        "accountAddress": "terra1uw4244x4ull660gyuft3hzv4mrkw0a50umkx90"
+    },
+    "type": "Parameter-change",
+    "status": "Passed",
+    "submitTime": "2020-01-22T08:15:38.341Z",
+    "title": "Proposal to Implement a Temporary Tax Rate Freeze",
+    "description": "Propose a temporary freeze in the tax rate until sufficient reward history has been established.\n\n-=-=-\n\nFull proposal: https://agora.terra.money/t/proposal-to-implement-a-temporary-tax-rate-freeze/172\n\n-=-=-\n\n",
+    "deposit": {
+        "depositEndTime": "2020-02-05T08:15:38.341Z",
+        "totalDeposit": [
+            {
+                "denom": "uluna",
+                "amount": "512000000"
+            }
+        ],
+        "minDeposit": [
+            {
+                "denom": "uluna",
+                "amount": "512000000"
+            }
+        ]
+    },
+    "vote": {
+        "id": "4",
+        "distribution": {
+            "No": "0",
+            "Yes": "158197461631386",
+            "Abstain": "0",
+            "NoWithVeto": "441787707106"
+        },
+        "count": {
+            "No": 0,
+            "Yes": 27,
+            "Abstain": 0,
+            "NoWithVeto": 1
+        },
+        "total": "158639249338492.0000000000",
+        "votingEndTime": "2020-02-05T08:15:38.341Z",
+        "stakedLuna": "271489853479974.0000000000",
+        "voters": {
+            "terra123gn6j23lmexu0qx5qhmgxgunmjcqsx8g5ueq2": "Yes",
+            "terra12e7xuxqw38vv054z800zght7jwddvhsp3n69yd": "Yes",
+            "terra15cupwhpnxhgylxa8n4ufyvux05xu864jcrrkqa": "Yes",
+            "terra163phlen6dn7sp9khhjar2gqqx6kga0ly8zj24m": "Yes",
+            "terra18825kzx0zmdntpucvd2gjezau57vdyua6x0sry": "Yes",
+            "terra1d3hatwcsvkktgwp3elglw9glca0h42yg6fgg0j": "Yes",
+            "terra1dwzf82lee8ww3vxxd3v5vdygsuagvne5tss6az": "Yes",
+            "terra1e5ncelsh4qhqt3s97vn43hxlhmt7zd43yszdnf": "NoWithVeto",
+            "terra1e82da9n6jz4t42eh0wn5hrt6hdmf7jyq8sufkp": "Yes",
+            "terra1ejqnt875xpjhgkrxdxs8lecjp2euh3vlqzjtwr": "Yes",
+            "terra1eutun6vh83lmyq0wmyf9vgghvurze2xansfdsf": "Yes",
+            "terra1f2z4q5kdelhfk7xq3xmxzlhp6ntrtzu659pl0s": "Yes",
+            "terra1fjuvyccn8hfmn5r7wc2t3kwqy09zzp6tya55yu": "Yes",
+            "terra1hg70rkal5d86fl57k0gc7de0rrk4klgs520rzt": "Yes",
+            "terra1jklavkl3q7mkmxnwjfy2kl8zsf2596h55mkfgw": "Yes",
+            "terra1jyjg55hzsh0f4xymy0kuuan30pp4q75ru0h35c": "Yes",
+            "terra1kgddca7qj96z0qcxr2c45z73cfl0c75pael9y2": "Yes",
+            "terra1ku3rma9yflpsyp0khkh4wxmz8al46txzm8z95w": "Yes",
+            "terra1lda78gzrjx0rsadtdk0zn4v7awtz6m9lrzcyjk": "No",
+            "terra1p54hc4yy2ajg67j645dn73w3378j6k05v52cnk": "Yes",
+            "terra1pc0gs3n6803x7jqe9m7etegmyx29xw38aj9vvd": "Yes",
+            "terra1rf9xakxf97a49qa5svsf7yypjswzkutqfclur8": "Yes",
+            "terra1rgu3qmm6rllfxlrfk94pgxa0jm37902dyuvy8g": "Yes",
+            "terra1sym8gyehrdsm03vdc44rg9sflg8zeuqwfd3384": "Yes",
+            "terra1t2a44r52qgtfhpwe8f9q7jvlk9u32vd54geny3": "Yes",
+            "terra1tmd0t803aywdhwuee45e0n0cl4x2d6fp6fjvtd": "Yes",
+            "terra1wm25ux06a8l5dtkkvwm0f4u2tpryg8zqr6h82l": "Yes",
+            "terra1yad8pjqp93gvwkxa2aa5mh4vctzfs37eka279r": "Yes"
+        }
+    },
+    "content": [
+        {
+            "key": "changes",
+            "value": [
+                {
+                    "key": "windowprobation",
+                    "value": "\"18\"",
+                    "subspace": "treasury"
+                }
+            ]
+        }
+    ],
+    "tallyingParameters": {
+        "veto": "0.334000000000000000",
+        "quorum": "0.400000000000000000",
+        "threshold": "0.500000000000000000"
+    }
+}

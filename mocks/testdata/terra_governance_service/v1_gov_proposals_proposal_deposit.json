@@ -1,0 +1,46 @@
+{
+    "id": "150",
+    "proposer": {
+        "accountAddress": "terra1p47u2fl4l3mrte6w85pjl3860ce06gz03twy8r"
+    },
+    "type": "Text Proposal",
+    "status": "Deposit",
+    "submitTime": "2021-12-05T02:31:44.397Z",
+    "title": "What name should Miranda have as her tattoo?",
+    "description": "Ace\nIce Man\nCrypto King",
+    "deposit": {
+        "depositEndTime": "2021-12-19T02:31:44.397Z",
+        "totalDeposit": [],
+        "minDeposit": [
+            {
+                "denom": "uluna",
+                "amount": "50000000"
+            }
+        ]
+    },
+    "vote": {
+        "id": "150",
+        "distribution": {
+            "No": "0",
+            "Yes": "0",
+            "Abstain": "0",
+            "NoWithVeto": "0"
+        },
+        "count": {
+            "No": 0,
+            "Yes": 0,
+            "Abstain": 0,
+            "NoWithVeto": 0
+        },
+        "total": "0.0000000000",
+        "votingEndTime": "0001-01-01T00:00:00.000Z",
+        "stakedLuna": "326539213403515.0000000000",
+        "voters": {}
+    },
+    "content": [],
+    "tallyingParameters": {
+        "quorum": "0.400000000000000000",
+        "threshold": "0.500000000000000000",
+        "veto_threshold": "0.334000000000000000"
+    }
+}

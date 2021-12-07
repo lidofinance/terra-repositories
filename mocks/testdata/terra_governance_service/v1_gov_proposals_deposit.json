@@ -1,0 +1,57 @@
+{
+    "minDeposit": [
+      {
+        "denom": "uluna",
+        "amount": "50000000"
+      }
+    ],
+    "maxDepositPeriod": "1209600000000000",
+    "votingPeriod": "604800000000000",
+    "proposals": [
+      {
+        "id": "146",
+        "proposer": {
+          "accountAddress": "terra14ue8tjg0gpd8wkcq0y65steyst27whyglss4r0"
+        },
+        "type": "Text Proposal",
+        "status": "Deposit",
+        "submitTime": "2021-11-22T16:42:52.384Z",
+        "title": "Provide UST a use case in real life",
+        "description": "The goal is to boost the UST usee case.\nCore team should develop the possibility to connect Terra Wallet to Amazon and PayPal web site to TopUp specific application wallet with User's currency",
+        "deposit": {
+          "depositEndTime": "2021-12-06T16:42:52.384Z",
+          "totalDeposit": [
+            {
+              "denom": "uluna",
+              "amount": "140144"
+            }
+          ],
+          "minDeposit": [
+            {
+              "denom": "uluna",
+              "amount": "50000000"
+            }
+          ]
+        },
+        "vote": {
+          "id": "146",
+          "distribution": {
+            "No": "0",
+            "Yes": "0",
+            "Abstain": "0",
+            "NoWithVeto": "0"
+          },
+          "count": {
+            "No": 0,
+            "Yes": 0,
+            "Abstain": 0,
+            "NoWithVeto": 0
+          },
+          "total": "0.0000000000",
+          "votingEndTime": "0001-01-01T00:00:00.000Z",
+          "stakedLuna": "330245775986901.0000000000",
+          "voters": {}
+        }
+      }
+    ]
+  }

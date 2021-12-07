@@ -1,0 +1,10 @@
+{
+    "val_signing_info": {
+      "address": "terravalcons1xadsk662jwx669mjkxgdsc9s7a4fj33uy6yr9d",
+      "start_height": "3940078",
+      "index_offset": "1123",
+      "jailed_until": "9999-12-31T23:59:59Z",
+      "tombstoned": true,
+      "missed_blocks_counter": "0"
+    }
+  }

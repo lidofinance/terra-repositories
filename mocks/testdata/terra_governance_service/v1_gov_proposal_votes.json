@@ -1,0 +1,293 @@
+{
+    "totalCnt": 39,
+    "page": 1,
+    "limit": 100,
+    "votes": [
+      {
+        "answer": "Yes",
+        "voter": {
+          "accountAddress": "terra1aw0znxtlq0wrayyz7wppz3qnw94hfrmnnv5mzw",
+          "operatorAddress": "terravaloper1aw0znxtlq0wrayyz7wppz3qnw94hfrmnnrcxja",
+          "moniker": "RockX"
+        }
+      },
+      {
+        "answer": "Yes",
+        "voter": {
+          "accountAddress": "terra1dcrq2xwuhea9hm5xfuydjuwgz6gm7vdjz34gv6",
+          "operatorAddress": "terravaloper1dcrq2xwuhea9hm5xfuydjuwgz6gm7vdjz7e4uf",
+          "moniker": "Mr.K"
+        }
+      },
+      {
+        "answer": "Yes",
+        "voter": {
+          "accountAddress": "terra1kprce6kc08a6l03gzzh99hfpazfjeczfpd6td0",
+          "operatorAddress": "terravaloper1kprce6kc08a6l03gzzh99hfpazfjeczfpzkkau",
+          "moniker": "Certus One"
+        }
+      },
+      {
+        "answer": "Yes",
+        "voter": {
+          "accountAddress": "terra1tusfpgvjrplqg2fm7wacy4slzjmnzswcfn9puj",
+          "operatorAddress": "terravaloper1tusfpgvjrplqg2fm7wacy4slzjmnzswcfufuvp",
+          "moniker": "ATEAM"
+        }
+      },
+      {
+        "answer": "Yes",
+        "voter": {
+          "accountAddress": "terra1gh7wpfpsjrqnash5uc84z4njt95y9g5nh7saj4",
+          "operatorAddress": "terravaloper1gh7wpfpsjrqnash5uc84z4njt95y9g5nh3uqzx",
+          "moniker": "Genesis Lab"
+        }
+      },
+      {
+        "answer": "Yes",
+        "voter": {
+          "accountAddress": "terra1cac2mcf2eszn9ln3fx4heym6kd363zqfes27ts",
+          "operatorAddress": "terravaloper1cac2mcf2eszn9ln3fx4heym6kd363zqfelxrmr",
+          "moniker": "Fair Square Lab"
+        }
+      },
+      {
+        "answer": "Yes",
+        "voter": {
+          "accountAddress": "terra1gkumn82kkj3cww28yp53agy7aluxv06fsngwu7",
+          "operatorAddress": "terravaloper1gkumn82kkj3cww28yp53agy7aluxv06fsuynvd",
+          "moniker": "stefanski"
+        }
+      },
+      {
+        "answer": "Yes",
+        "voter": {
+          "accountAddress": "terra1nwrksgv2vuadma8ygs8rhwffu2ygk4j24pxxx0",
+          "operatorAddress": "terravaloper1nwrksgv2vuadma8ygs8rhwffu2ygk4j24w2mku",
+          "moniker": "Stakin"
+        }
+      },
+      {
+        "answer": "Yes",
+        "voter": {
+          "accountAddress": "terra1zyqjvl2ly87z95x4l94ytq7hkgpfukkvssshtc"
+        }
+      },
+      {
+        "answer": "Yes",
+        "voter": {
+          "accountAddress": "terra1ya23p5cxtxwcfdrq4dmd2h0p5nc0vcl96tm0nw",
+          "operatorAddress": "terravaloper1ya23p5cxtxwcfdrq4dmd2h0p5nc0vcl96yhjra",
+          "moniker": "BTC.Secure"
+        }
+      },
+      {
+        "answer": "Yes",
+        "voter": {
+          "accountAddress": "terra1rjetaseqwuhcd9s3c2s5zgp8kcr6u4zcj603as"
+        }
+      },
+      {
+        "answer": "Yes",
+        "voter": {
+          "accountAddress": "terra1ejqnt875xpjhgkrxdxs8lecjp2euh3vlqzjtwr"
+        }
+      },
+      {
+        "answer": "Yes",
+        "voter": {
+          "accountAddress": "terra1dwzf82lee8ww3vxxd3v5vdygsuagvne5tss6az"
+        }
+      },
+      {
+        "answer": "Yes",
+        "voter": {
+          "accountAddress": "terra1lda78gzrjx0rsadtdk0zn4v7awtz6m9lrzcyjk",
+          "operatorAddress": "terravaloper1lda78gzrjx0rsadtdk0zn4v7awtz6m9lrd5ez9",
+          "moniker": "Polychain Labs"
+        }
+      },
+      {
+        "answer": "Yes",
+        "voter": {
+          "accountAddress": "terra15cupwhpnxhgylxa8n4ufyvux05xu864jcrrkqa",
+          "operatorAddress": "terravaloper15cupwhpnxhgylxa8n4ufyvux05xu864jcv0tsw",
+          "moniker": "Figment"
+        }
+      },
+      {
+        "answer": "Yes",
+        "voter": {
+          "accountAddress": "terra1jklavkl3q7mkmxnwjfy2kl8zsf2596h55mkfgw"
+        }
+      },
+      {
+        "answer": "Yes",
+        "voter": {
+          "accountAddress": "terra123gn6j23lmexu0qx5qhmgxgunmjcqsx8g5ueq2",
+          "operatorAddress": "terravaloper123gn6j23lmexu0qx5qhmgxgunmjcqsx8gmsyse",
+          "moniker": "Staking Fund"
+        }
+      },
+      {
+        "answer": "Yes",
+        "voter": {
+          "accountAddress": "terra1kgddca7qj96z0qcxr2c45z73cfl0c75pael9y2",
+          "operatorAddress": "terravaloper1kgddca7qj96z0qcxr2c45z73cfl0c75paknc5e",
+          "moniker": "ChainLayer"
+        }
+      },
+      {
+        "answer": "Yes",
+        "voter": {
+          "accountAddress": "terra12e7xuxqw38vv054z800zght7jwddvhsp3n69yd"
+        }
+      },
+      {
+        "answer": "Yes",
+        "voter": {
+          "accountAddress": "terra1p54hc4yy2ajg67j645dn73w3378j6k05v52cnk",
+          "operatorAddress": "terravaloper1p54hc4yy2ajg67j645dn73w3378j6k05vmx9r9",
+          "moniker": "hashed"
+        }
+      },
+      {
+        "answer": "Yes",
+        "voter": {
+          "accountAddress": "terra18825kzx0zmdntpucvd2gjezau57vdyua6x0sry",
+          "operatorAddress": "terravaloper18825kzx0zmdntpucvd2gjezau57vdyua6frdnh",
+          "moniker": "Ubik.Capital"
+        }
+      },
+      {
+        "answer": "Yes",
+        "voter": {
+          "accountAddress": "terra1fjuvyccn8hfmn5r7wc2t3kwqy09zzp6tya55yu",
+          "operatorAddress": "terravaloper1fjuvyccn8hfmn5r7wc2t3kwqy09zzp6tyjcf50",
+          "moniker": "DELIGHT"
+        }
+      },
+      {
+        "answer": "Yes",
+        "voter": {
+          "accountAddress": "terra163phlen6dn7sp9khhjar2gqqx6kga0ly8zj24m",
+          "operatorAddress": "terravaloper163phlen6dn7sp9khhjar2gqqx6kga0ly8d7h9g",
+          "moniker": "Goliath"
+        }
+      },
+      {
+        "answer": "Yes",
+        "voter": {
+          "accountAddress": "terra1d3hatwcsvkktgwp3elglw9glca0h42yg6fgg0j",
+          "operatorAddress": "terravaloper1d3hatwcsvkktgwp3elglw9glca0h42yg6xy4lp",
+          "moniker": "Marine"
+        }
+      },
+      {
+        "answer": "Yes",
+        "voter": {
+          "accountAddress": "terra1rgu3qmm6rllfxlrfk94pgxa0jm37902dyuvy8g",
+          "operatorAddress": "terravaloper1rgu3qmm6rllfxlrfk94pgxa0jm37902dynqehm",
+          "moniker": "Ghost"
+        }
+      },
+      {
+        "answer": "Yes",
+        "voter": {
+          "accountAddress": "terra1eutun6vh83lmyq0wmyf9vgghvurze2xansfdsf",
+          "operatorAddress": "terravaloper1eutun6vh83lmyq0wmyf9vgghvurze2xanl9sq6",
+          "moniker": "Wraith"
+        }
+      },
+      {
+        "answer": "Yes",
+        "voter": {
+          "accountAddress": "terra1yad8pjqp93gvwkxa2aa5mh4vctzfs37eka279r",
+          "operatorAddress": "terravaloper1yad8pjqp93gvwkxa2aa5mh4vctzfs37ekjxr4s",
+          "moniker": "healings"
+        }
+      },
+      {
+        "answer": "Yes",
+        "voter": {
+          "accountAddress": "terra1pc0gs3n6803x7jqe9m7etegmyx29xw38aj9vvd",
+          "operatorAddress": "terravaloper1pc0gs3n6803x7jqe9m7etegmyx29xw38aaf3u7",
+          "moniker": "Staker Space"
+        }
+      },
+      {
+        "answer": "Yes",
+        "voter": {
+          "accountAddress": "terra1f2z4q5kdelhfk7xq3xmxzlhp6ntrtzu659pl0s"
+        }
+      },
+      {
+        "answer": "Yes",
+        "voter": {
+          "accountAddress": "terra1sym8gyehrdsm03vdc44rg9sflg8zeuqwfd3384",
+          "operatorAddress": "terravaloper1sym8gyehrdsm03vdc44rg9sflg8zeuqwfzavhx",
+          "moniker": "syncnode"
+        }
+      },
+      {
+        "answer": "NoWithVeto",
+        "voter": {
+          "accountAddress": "terra1e5ncelsh4qhqt3s97vn43hxlhmt7zd43yszdnf"
+        }
+      },
+      {
+        "answer": "Yes",
+        "voter": {
+          "accountAddress": "terra1jyjg55hzsh0f4xymy0kuuan30pp4q75ru0h35c",
+          "operatorAddress": "terravaloper1jyjg55hzsh0f4xymy0kuuan30pp4q75ruqmvyt",
+          "moniker": "kytzu"
+        }
+      },
+      {
+        "answer": "Yes",
+        "voter": {
+          "accountAddress": "terra1t2a44r52qgtfhpwe8f9q7jvlk9u32vd54geny3"
+        }
+      },
+      {
+        "answer": "Yes",
+        "voter": {
+          "accountAddress": "terra1e82da9n6jz4t42eh0wn5hrt6hdmf7jyq8sufkp"
+        }
+      },
+      {
+        "answer": "Yes",
+        "voter": {
+          "accountAddress": "terra1ku3rma9yflpsyp0khkh4wxmz8al46txzm8z95w"
+        }
+      },
+      {
+        "answer": "Yes",
+        "voter": {
+          "accountAddress": "terra1tmd0t803aywdhwuee45e0n0cl4x2d6fp6fjvtd"
+        }
+      },
+      {
+        "answer": "Yes",
+        "voter": {
+          "accountAddress": "terra1hg70rkal5d86fl57k0gc7de0rrk4klgs520rzt",
+          "operatorAddress": "terravaloper1hg70rkal5d86fl57k0gc7de0rrk4klgs59r7jc",
+          "moniker": "Terraforming/inactive, please undelegate"
+        }
+      },
+      {
+        "answer": "Yes",
+        "voter": {
+          "accountAddress": "terra1wm25ux06a8l5dtkkvwm0f4u2tpryg8zqr6h82l"
+        }
+      },
+      {
+        "answer": "Yes",
+        "voter": {
+          "accountAddress": "terra1rf9xakxf97a49qa5svsf7yypjswzkutqfclur8",
+          "operatorAddress": "terravaloper1rf9xakxf97a49qa5svsf7yypjswzkutqfhnpn5",
+          "moniker": "gazua"
+        }
+      }
+    ]
+  }

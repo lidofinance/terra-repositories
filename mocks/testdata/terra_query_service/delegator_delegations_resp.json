@@ -1,0 +1,41 @@
+{
+    "delegation_responses": [
+      {
+        "delegation": {
+          "delegator_address": "terra1rq5eq7szjsj5zsqxzz595gc0z8hqsx7y9gdz03",
+          "validator_address": "terravaloper1pux4j3hm2am302qr40u5leh5lsgfvgjsksnthm",
+          "shares": "3999997000000.000000000000000000"
+        },
+        "balance": {
+          "denom": "uluna",
+          "amount": "3999997000000"
+        }
+      },
+      {
+        "delegation": {
+          "delegator_address": "terra1rq5eq7szjsj5zsqxzz595gc0z8hqsx7y9gdz03",
+          "validator_address": "terravaloper1t0z9y2p26qzsh06f2l2kn2v8hqtkyd33s409ey",
+          "shares": "150688000295.000000000000000000"
+        },
+        "balance": {
+          "denom": "uluna",
+          "amount": "150688000295"
+        }
+      },
+      {
+        "delegation": {
+          "delegator_address": "terra1rq5eq7szjsj5zsqxzz595gc0z8hqsx7y9gdz03",
+          "validator_address": "terravaloper1wqcc5g3k3mqg96pgvemzstmhkf42lt8358v6rd",
+          "shares": "0.358159862987143534"
+        },
+        "balance": {
+          "denom": "uluna",
+          "amount": "0"
+        }
+      }
+    ],
+    "pagination": {
+      "next_key": null,
+      "total": "3"
+    }
+  }

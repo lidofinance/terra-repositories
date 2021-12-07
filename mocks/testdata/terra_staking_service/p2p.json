@@ -1,0 +1,29 @@
+{
+    "height": "5573347",
+    "result": {
+      "operator_address": "terravaloper144l7c3uph5a7h62xd8u5et3rqvj3dqtvvka2fu",
+      "consensus_pubkey": {
+        "type": "tendermint/PubKeyEd25519",
+        "value": "yd5Xn8riG6sd2gN0v+Pq5GRaEJSr8df8tVb/fLS3tbk="
+      },
+      "status": 3,
+      "tokens": "2779740853396",
+      "delegator_shares": "2779740853396.000000000000000000",
+      "description": {
+        "moniker": "P2P.ORG - P2P Validator",
+        "identity": "E12F4695036D8072",
+        "website": "p2p.org",
+        "details": "Stake blockchain assets and get rewarded"
+      },
+      "unbonding_time": "1970-01-01T00:00:00Z",
+      "commission": {
+        "commission_rates": {
+          "rate": "0.080000000000000000",
+          "max_rate": "0.200000000000000000",
+          "max_change_rate": "0.010000000000000000"
+        },
+        "update_time": "2019-05-26T07:52:28.643057385Z"
+      },
+      "min_self_delegation": "5"
+    }
+  }

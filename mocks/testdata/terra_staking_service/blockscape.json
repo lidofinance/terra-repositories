@@ -1,0 +1,29 @@
+{
+    "height": "5573353",
+    "result": {
+      "operator_address": "terravaloper1542ek7muegmm806akl0lam5vlqlph7spflfcun",
+      "consensus_pubkey": {
+        "type": "tendermint/PubKeyEd25519",
+        "value": "oLA+Tz8RSEeW0OIovDDeHXW4fmaxUGAE5k/27cdtP3M="
+      },
+      "status": 3,
+      "tokens": "1228602385273",
+      "delegator_shares": "1228602385273.000000000000000000",
+      "description": {
+        "moniker": "blockscape",
+        "identity": "C46C8329BB5F48D8",
+        "website": "https://blockscape.network/",
+        "details": "By delegating, you confirm that you are aware of the risk of slashing and that M-Way Solutions GmbH is not liable for any potential damages to your investment."
+      },
+      "unbonding_time": "1970-01-01T00:00:00Z",
+      "commission": {
+        "commission_rates": {
+          "rate": "0.099900000000000000",
+          "max_rate": "0.399900000000000000",
+          "max_change_rate": "0.199900000000000000"
+        },
+        "update_time": "2021-02-09T16:13:39.465587808Z"
+      },
+      "min_self_delegation": "1"
+    }
+  }
