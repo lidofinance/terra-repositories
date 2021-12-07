@@ -14,19 +14,19 @@ import (
 	cosmostypes "github.com/cosmos/cosmos-sdk/types"
 )
 
-func NewV1ValidatorsRepository(hubContract string, apiClient *client.TerraRESTApis) *V1ValidatorsRepository {
-	return &V1ValidatorsRepository{
+func NewV1Repository(hubContract string, apiClient *client.TerraRESTApis) *V1Repository {
+	return &V1Repository{
 		hubContract: hubContract,
 		apiClient:   apiClient,
 	}
 }
 
-type V1ValidatorsRepository struct {
+type V1Repository struct {
 	hubContract string
 	apiClient   *client.TerraRESTApis
 }
 
-func (r *V1ValidatorsRepository) GetValidatorsAddresses(ctx context.Context) ([]string, error) {
+func (r *V1Repository) GetValidatorsAddresses(ctx context.Context) ([]string, error) {
 	reqRaw, err := json.Marshal(&HubWhitelistedValidatorsRequest{})
 	if err != nil {
 		return nil, fmt.Errorf("failed to marshal HubWhitelistedValidators request: %w", err)
@@ -55,7 +55,7 @@ func (r *V1ValidatorsRepository) GetValidatorsAddresses(ctx context.Context) ([]
 	return hubResp.Validators, nil
 }
 
-func (r *V1ValidatorsRepository) GetValidatorInfo(ctx context.Context, address string) (ValidatorInfo, error) {
+func (r *V1Repository) GetValidatorInfo(ctx context.Context, address string) (ValidatorInfo, error) {
 	validatorInfoResponse, err := r.apiClient.Staking.GetStakingValidatorsValidatorAddr(
 		&staking.GetStakingValidatorsValidatorAddrParams{
 			ValidatorAddr: address,

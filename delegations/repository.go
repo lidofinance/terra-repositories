@@ -20,7 +20,7 @@ type Repository interface {
 	GetDelegationsFromAddress(ctx context.Context, address string) (ret []Delegation, err error)
 }
 
-func New(apiClient *client.TerraRESTApis) Repository {
+func New(apiClient *client.TerraRESTApis) *BaseRepository {
 	return &BaseRepository{apiClient: apiClient}
 }
 

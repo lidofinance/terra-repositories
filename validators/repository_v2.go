@@ -14,19 +14,19 @@ import (
 	cosmostypes "github.com/cosmos/cosmos-sdk/types"
 )
 
-func NewV2ValidatorsRepository(valRegistryContract string, apiClient *client.TerraRESTApis) *V2ValidatorsRepository {
-	return &V2ValidatorsRepository{
+func NewV2Repository(valRegistryContract string, apiClient *client.TerraRESTApis) *V2Repository {
+	return &V2Repository{
 		validatorsRegistryContract: valRegistryContract,
 		apiClient:                  apiClient,
 	}
 }
 
-type V2ValidatorsRepository struct {
+type V2Repository struct {
 	validatorsRegistryContract string
 	apiClient                  *client.TerraRESTApis
 }
 
-func (r *V2ValidatorsRepository) GetValidatorsAddresses(ctx context.Context) ([]string, error) {
+func (r *V2Repository) GetValidatorsAddresses(ctx context.Context) ([]string, error) {
 	reqRaw, err := json.Marshal(&ValidatorRegistryValidatorsRequest{})
 	if err != nil {
 		return nil, fmt.Errorf("failed to marshal ValidatorRegistryValidatorsRequest request: %w", err)
@@ -59,7 +59,7 @@ func (r *V2ValidatorsRepository) GetValidatorsAddresses(ctx context.Context) ([]
 	return valAddresses, nil
 }
 
-func (r *V2ValidatorsRepository) GetValidatorInfo(ctx context.Context, address string) (ValidatorInfo, error) {
+func (r *V2Repository) GetValidatorInfo(ctx context.Context, address string) (ValidatorInfo, error) {
 	validatorInfoResponse, err := r.apiClient.Staking.GetStakingValidatorsValidatorAddr(
 		&staking.GetStakingValidatorsValidatorAddrParams{
 			ValidatorAddr: address,

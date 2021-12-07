@@ -22,7 +22,7 @@ const (
 
 func TestGetProposal(t *testing.T) {
 	t.Run("WithMock", func(t *testing.T) {
-		repo := NewFCDRepo(&client.TerraRESTApis{Governance: &mocks.TerraGovernanceServiceMock{}})
+		repo := New(&client.TerraRESTApis{Governance: &mocks.TerraGovernanceServiceMock{}})
 		for _, proposalID := range []int{
 			mocks.TestGetProposalDepositID,
 			mocks.TestGetProposalVotingID,
@@ -41,7 +41,7 @@ func TestGetProposal(t *testing.T) {
 		if testing.Short() {
 			t.Skip("skipping test in short mode.")
 		}
-		repo := NewFCDRepo(factory.NewDefaultClient())
+		repo := New(factory.NewDefaultClient())
 		for _, proposalID := range []int{
 			fcdTestDepositProposalID,
 			fcdTestVotingProposalID,
@@ -59,7 +59,7 @@ func TestGetProposal(t *testing.T) {
 
 func TestFetchVoting(t *testing.T) {
 	t.Run("WithMock", func(t *testing.T) {
-		repo := NewFCDRepo(&client.TerraRESTApis{Governance: &mocks.TerraGovernanceServiceMock{}})
+		repo := New(&client.TerraRESTApis{Governance: &mocks.TerraGovernanceServiceMock{}})
 		votings, err := repo.FetchVoting(context.Background())
 		if assert.Nil(t, err) {
 			validateVotingProposals(t, votings)
@@ -70,7 +70,7 @@ func TestFetchVoting(t *testing.T) {
 		if testing.Short() {
 			t.Skip("skipping test in short mode.")
 		}
-		repo := NewFCDRepo(factory.NewDefaultClient())
+		repo := New(factory.NewDefaultClient())
 		votings, err := repo.FetchVoting(context.Background())
 		if assert.Nil(t, err) {
 			validateVotingProposals(t, votings)
@@ -80,7 +80,7 @@ func TestFetchVoting(t *testing.T) {
 
 func TestFetchDeposit(t *testing.T) {
 	t.Run("WithMock", func(t *testing.T) {
-		repo := NewFCDRepo(&client.TerraRESTApis{Governance: &mocks.TerraGovernanceServiceMock{}})
+		repo := New(&client.TerraRESTApis{Governance: &mocks.TerraGovernanceServiceMock{}})
 		deposits, err := repo.FetchDeposit(context.Background())
 		if assert.Nil(t, err) {
 			validateDepositProposals(t, deposits)
@@ -91,7 +91,7 @@ func TestFetchDeposit(t *testing.T) {
 		if testing.Short() {
 			t.Skip("skipping test in short mode.")
 		}
-		repo := NewFCDRepo(factory.NewDefaultClient())
+		repo := New(factory.NewDefaultClient())
 		deposits, err := repo.FetchDeposit(context.Background())
 		if assert.Nil(t, err) {
 			validateDepositProposals(t, deposits)
@@ -101,7 +101,7 @@ func TestFetchDeposit(t *testing.T) {
 
 func TestGetVotes(t *testing.T) {
 	t.Run("WithMock", func(t *testing.T) {
-		repo := NewFCDRepo(&client.TerraRESTApis{Governance: &mocks.TerraGovernanceServiceMock{}})
+		repo := New(&client.TerraRESTApis{Governance: &mocks.TerraGovernanceServiceMock{}})
 		votes, err := repo.GetVotes(context.Background(), mocks.TestGetProposalVotesID)
 		if assert.Nil(t, err) {
 			t.Logf("validating %d votes of proposal %d", len(votes), mocks.TestGetProposalVotesID)
@@ -113,7 +113,7 @@ func TestGetVotes(t *testing.T) {
 		if testing.Short() {
 			t.Skip("skipping test in short mode.")
 		}
-		repo := NewFCDRepo(factory.NewDefaultClient())
+		repo := New(factory.NewDefaultClient())
 		for _, proposalID := range []int{
 			fcdTestVotingProposalID,
 			fcdTestPassedProposalID,

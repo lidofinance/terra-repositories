@@ -28,9 +28,9 @@ var bombayFCDEndpoint = factory.Endpoint{
 	Schemes: []string{bombayFCDScheme},
 }
 
-func TestRepositoryV1(t *testing.T) {
+func TestV1Repository(t *testing.T) {
 	t.Run("WithMock", func(t *testing.T) {
-		repo := NewV1ValidatorsRepository(mocks.V1WhitelistedValidatorsContractAddress, &client.TerraRESTApis{
+		repo := NewV1Repository(mocks.V1WhitelistedValidatorsContractAddress, &client.TerraRESTApis{
 			Staking: &mocks.TerraStakingService{},
 			Wasm:    &mocks.TerraWASMService{},
 		})
@@ -51,7 +51,7 @@ func TestRepositoryV1(t *testing.T) {
 		if testing.Short() {
 			t.Skip("skipping test in short mode.")
 		}
-		repo := NewV1ValidatorsRepository(hubContract, factory.NewDefaultClient())
+		repo := NewV1Repository(hubContract, factory.NewDefaultClient())
 		addresses, err := repo.GetValidatorsAddresses(context.Background())
 		if err != nil {
 			t.Fatalf("failed to get validator addresses: %v", err)
@@ -72,9 +72,9 @@ func TestRepositoryV1(t *testing.T) {
 	})
 }
 
-func TestRepositoryV2(t *testing.T) {
+func TestV2Repository(t *testing.T) {
 	t.Run("WithMock", func(t *testing.T) {
-		repo := NewV2ValidatorsRepository(mocks.V2WhitelistedValidatorsContractAddress, &client.TerraRESTApis{
+		repo := NewV2Repository(mocks.V2WhitelistedValidatorsContractAddress, &client.TerraRESTApis{
 			Staking: &mocks.TerraStakingService{},
 			Wasm:    &mocks.TerraWASMService{},
 		})
@@ -95,7 +95,7 @@ func TestRepositoryV2(t *testing.T) {
 		if testing.Short() {
 			t.Skip("skipping test in short mode.")
 		}
-		repo := NewV2ValidatorsRepository(
+		repo := NewV2Repository(
 			validatorsRegistryContract,
 			factory.NewClient(bombayFCDEndpoint, client.DefaultBasePath),
 		)

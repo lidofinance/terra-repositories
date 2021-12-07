@@ -19,7 +19,7 @@ const (
 	Bech32TerraValConsPrefix = "terravalcons"
 )
 
-type ValidatorsRepository interface {
+type Repository interface {
 	GetValidatorsAddresses(ctx context.Context) ([]string, error)
 	GetValidatorInfo(ctx context.Context, address string) (ValidatorInfo, error)
 }

@@ -23,17 +23,15 @@ type Repository interface {
 	GetVotes(ctx context.Context, proposalID int) ([]*models.GetProposalVotesResultVotes, error)
 }
 
-func NewFCDRepo(apiClient *client.TerraRESTApis) *FCDRepo {
-	return &FCDRepo{
-		apiClient: apiClient,
-	}
+func New(apiClient *client.TerraRESTApis) *BaseRepository {
+	return &BaseRepository{apiClient: apiClient}
 }
 
-type FCDRepo struct {
+type BaseRepository struct {
 	apiClient *client.TerraRESTApis
 }
 
-func (r *FCDRepo) Get(ctx context.Context, proposalID int) (*models.GetProposalResult, error) {
+func (r *BaseRepository) Get(ctx context.Context, proposalID int) (*models.GetProposalResult, error) {
 	resp, err := r.apiClient.Governance.GetV1GovProposalsProposalID(
 		&governance.GetV1GovProposalsProposalIDParams{
 			ProposalID: strconv.Itoa(proposalID),
@@ -53,16 +51,16 @@ func (r *FCDRepo) Get(ctx context.Context, proposalID int) (*models.GetProposalR
 }
 
 // FetchVoting fetches proposals with voting status
-func (r *FCDRepo) FetchVoting(ctx context.Context) ([]*models.GetProposalListResultProposals, error) {
+func (r *BaseRepository) FetchVoting(ctx context.Context) ([]*models.GetProposalListResultProposals, error) {
 	return r.fetch(ctx, VotingStatus)
 }
 
 // FetchDeposit fetches proposals with deposit status
-func (r *FCDRepo) FetchDeposit(ctx context.Context) ([]*models.GetProposalListResultProposals, error) {
+func (r *BaseRepository) FetchDeposit(ctx context.Context) ([]*models.GetProposalListResultProposals, error) {
 	return r.fetch(ctx, DepositStatus)
 }
 
-func (r *FCDRepo) fetch(ctx context.Context, status string) ([]*models.GetProposalListResultProposals, error) {
+func (r *BaseRepository) fetch(ctx context.Context, status string) ([]*models.GetProposalListResultProposals, error) {
 	resp, err := r.apiClient.Governance.GetV1GovProposals(
 		&governance.GetV1GovProposalsParams{
 			Status:  &status,
@@ -81,7 +79,7 @@ func (r *FCDRepo) fetch(ctx context.Context, status string) ([]*models.GetPropos
 	return resp.GetPayload().Proposals, nil
 }
 
-func (r *FCDRepo) GetVotes(ctx context.Context, proposalID int) ([]*models.GetProposalVotesResultVotes, error) {
+func (r *BaseRepository) GetVotes(ctx context.Context, proposalID int) ([]*models.GetProposalVotesResultVotes, error) {
 	page := 1.0
 	votes := make([]*models.GetProposalVotesResultVotes, 0)
 	for {

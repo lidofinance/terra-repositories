@@ -18,20 +18,20 @@ type Repository interface {
 	GetAddress() string
 }
 
-func NewRepositoryCol5(apiClient *client.TerraRESTApis, logger *logrus.Logger) *RepositoryColumbus5 {
-	return &RepositoryColumbus5{
+func New(apiClient *client.TerraRESTApis, logger *logrus.Logger) *BaseRepository {
+	return &BaseRepository{
 		apiClient: apiClient,
 		logger:    logger,
 	}
 }
 
-type RepositoryColumbus5 struct {
+type BaseRepository struct {
 	apiClient   *client.TerraRESTApis
 	logger      *logrus.Logger
 	signingInfo *query.SigningInfoOKBodyValSigningInfo
 }
 
-func (s *RepositoryColumbus5) Init(ctx context.Context, consAddr string) error {
+func (s *BaseRepository) Init(ctx context.Context, consAddr string) error {
 	signingInfoResponse, err := s.apiClient.Query.SigningInfo(
 		&query.SigningInfoParams{
 			ConsAddress: consAddr,
@@ -48,7 +48,7 @@ func (s *RepositoryColumbus5) Init(ctx context.Context, consAddr string) error {
 	return nil
 }
 
-func (s *RepositoryColumbus5) GetMissedBlockCounter() float64 {
+func (s *BaseRepository) GetMissedBlockCounter() float64 {
 	if s.signingInfo == nil || s.signingInfo.MissedBlocksCounter == "" { // no blocks is sent as "", not as "0".
 		return 0
 	}
@@ -63,14 +63,14 @@ func (s *RepositoryColumbus5) GetMissedBlockCounter() float64 {
 	return numMissedBlocks
 }
 
-func (s *RepositoryColumbus5) GetTombstoned() bool {
+func (s *BaseRepository) GetTombstoned() bool {
 	if s.signingInfo != nil {
 		return s.signingInfo.Tombstoned
 	}
 	return false
 }
 
-func (s *RepositoryColumbus5) GetAddress() string {
+func (s *BaseRepository) GetAddress() string {
 	if s.signingInfo != nil {
 		return s.signingInfo.Address
 	}

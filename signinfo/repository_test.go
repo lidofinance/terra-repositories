@@ -22,7 +22,7 @@ var (
 func TestRepositoryPipeline(t *testing.T) {
 	t.Run("WithMock", func(t *testing.T) {
 		t.Run("Sound", func(t *testing.T) {
-			repo := NewRepositoryCol5(&client.TerraRESTApis{Query: &mocks.TerraQueryServiceMock{}}, logrus.New())
+			repo := New(&client.TerraRESTApis{Query: &mocks.TerraQueryServiceMock{}}, logrus.New())
 			err := repo.Init(context.Background(), mocks.TestSoundValidatorAddress)
 			if assert.Nil(t, err) {
 				t.Logf("validating validator %s signing info", mocks.TestSoundValidatorAddress)
@@ -32,7 +32,7 @@ func TestRepositoryPipeline(t *testing.T) {
 		})
 
 		t.Run("Tombstoned", func(t *testing.T) {
-			repo := NewRepositoryCol5(&client.TerraRESTApis{Query: &mocks.TerraQueryServiceMock{}}, logrus.New())
+			repo := New(&client.TerraRESTApis{Query: &mocks.TerraQueryServiceMock{}}, logrus.New())
 			err := repo.Init(context.Background(), mocks.TestTombstonedValidatorAddress)
 			if assert.Nil(t, err) {
 				t.Logf("validating validator %s signing info", mocks.TestTombstonedValidatorAddress)
@@ -60,7 +60,7 @@ func TestRepositoryPipeline(t *testing.T) {
 					wg.Add(1)
 					go func(addr string) {
 						defer wg.Done()
-						repo := NewRepositoryCol5(terraClient, logrus.New())
+						repo := New(terraClient, logrus.New())
 						assert.Nil(t, repo.Init(context.Background(), addr))
 						assert.Equalf(t, addr, repo.GetAddress(), "validator address mismatch")
 					}(info.Address)
