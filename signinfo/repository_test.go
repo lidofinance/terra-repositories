@@ -11,7 +11,6 @@ import (
 	"github.com/lidofinance/terra-fcd-rest-client/columbus-5/client/query"
 	"github.com/lidofinance/terra-fcd-rest-client/columbus-5/factory"
 
-	"github.com/sirupsen/logrus"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -22,22 +21,26 @@ var (
 func TestRepositoryPipeline(t *testing.T) {
 	t.Run("WithMock", func(t *testing.T) {
 		t.Run("Sound", func(t *testing.T) {
-			repo := New(&client.TerraRESTApis{Query: &mocks.TerraQueryServiceMock{}}, logrus.New())
+			repo := New(&client.TerraRESTApis{Query: &mocks.TerraQueryServiceMock{}})
 			err := repo.Init(context.Background(), mocks.TestSoundValidatorAddress)
 			if assert.Nil(t, err) {
 				t.Logf("validating validator %s signing info", mocks.TestSoundValidatorAddress)
 				assert.Falsef(t, repo.GetTombstoned(), "sound validator expected not to be tombstoned")
 				assert.Equalf(t, mocks.TestSoundValidatorAddress, repo.GetAddress(), "validator address mismatch")
+				_, err := repo.GetMissedBlockCounter()
+				assert.Nilf(t, err, "GetMissedBlockCounter must not return an error")
 			}
 		})
 
 		t.Run("Tombstoned", func(t *testing.T) {
-			repo := New(&client.TerraRESTApis{Query: &mocks.TerraQueryServiceMock{}}, logrus.New())
+			repo := New(&client.TerraRESTApis{Query: &mocks.TerraQueryServiceMock{}})
 			err := repo.Init(context.Background(), mocks.TestTombstonedValidatorAddress)
 			if assert.Nil(t, err) {
 				t.Logf("validating validator %s signing info", mocks.TestTombstonedValidatorAddress)
 				assert.Truef(t, repo.GetTombstoned(), "tombstoned validator expected be tombstoned")
 				assert.Equalf(t, mocks.TestTombstonedValidatorAddress, repo.GetAddress(), "validator address mismatch")
+				_, err := repo.GetMissedBlockCounter()
+				assert.Nilf(t, err, "GetMissedBlockCounter must not return an error")
 			}
 		})
 	})
@@ -60,9 +63,11 @@ func TestRepositoryPipeline(t *testing.T) {
 					wg.Add(1)
 					go func(addr string) {
 						defer wg.Done()
-						repo := New(terraClient, logrus.New())
+						repo := New(terraClient)
 						assert.Nil(t, repo.Init(context.Background(), addr))
 						assert.Equalf(t, addr, repo.GetAddress(), "validator address mismatch")
+						_, err := repo.GetMissedBlockCounter()
+						assert.Nilf(t, err, "GetMissedBlockCounter must not return an error")
 					}(info.Address)
 				}
 				wg.Wait()

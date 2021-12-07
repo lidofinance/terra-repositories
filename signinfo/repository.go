@@ -7,27 +7,23 @@ import (
 
 	"github.com/lidofinance/terra-fcd-rest-client/columbus-5/client"
 	"github.com/lidofinance/terra-fcd-rest-client/columbus-5/client/query"
-
-	"github.com/sirupsen/logrus"
 )
 
 type Repository interface {
 	Init(ctx context.Context, consAddr string) error
-	GetMissedBlockCounter() float64
+	GetMissedBlockCounter() (float64, error)
 	GetTombstoned() bool
 	GetAddress() string
 }
 
-func New(apiClient *client.TerraRESTApis, logger *logrus.Logger) *BaseRepository {
+func New(apiClient *client.TerraRESTApis) *BaseRepository {
 	return &BaseRepository{
 		apiClient: apiClient,
-		logger:    logger,
 	}
 }
 
 type BaseRepository struct {
 	apiClient   *client.TerraRESTApis
-	logger      *logrus.Logger
 	signingInfo *query.SigningInfoOKBodyValSigningInfo
 }
 
@@ -48,9 +44,9 @@ func (s *BaseRepository) Init(ctx context.Context, consAddr string) error {
 	return nil
 }
 
-func (s *BaseRepository) GetMissedBlockCounter() float64 {
+func (s *BaseRepository) GetMissedBlockCounter() (float64, error) {
 	if s.signingInfo == nil || s.signingInfo.MissedBlocksCounter == "" { // no blocks is sent as "", not as "0".
-		return 0
+		return 0, nil
 	}
 	// If the current block is greater than minHeight and the validator's MissedBlocksCounter is
 	// greater than maxMissed, they will be slashed. So numMissedBlocks > 0 does not mean that we
@@ -58,9 +54,9 @@ func (s *BaseRepository) GetMissedBlockCounter() float64 {
 	// https://docs.terra.money/dev/spec-slashing.html#begin-block
 	numMissedBlocks, err := strconv.ParseFloat(s.signingInfo.MissedBlocksCounter, 64)
 	if err != nil {
-		s.logger.Errorf("failed to Parse `missed_blocks_counter:`: %s", err)
+		return 0, fmt.Errorf("failed to Parse `missed_blocks_counter:`: %w", err)
 	}
-	return numMissedBlocks
+	return numMissedBlocks, nil
 }
 
 func (s *BaseRepository) GetTombstoned() bool {
