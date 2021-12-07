@@ -16,19 +16,15 @@ type Delegation struct {
 	DelegationAmount types.Int
 }
 
-type Repository interface {
-	GetDelegationsFromAddress(ctx context.Context, address string) (ret []Delegation, err error)
+func New(apiClient *client.TerraRESTApis) *Repository {
+	return &Repository{apiClient: apiClient}
 }
 
-func New(apiClient *client.TerraRESTApis) *BaseRepository {
-	return &BaseRepository{apiClient: apiClient}
-}
-
-type BaseRepository struct {
+type Repository struct {
 	apiClient *client.TerraRESTApis
 }
 
-func (r *BaseRepository) GetDelegationsFromAddress(ctx context.Context, address string) (ret []Delegation, err error) {
+func (r *Repository) GetDelegationsFromAddress(ctx context.Context, address string) (ret []Delegation, err error) {
 	var paginationKey strfmt.Base64
 	for {
 		delegationsResponse, err := r.apiClient.Query.DelegatorDelegations(&query.DelegatorDelegationsParams{

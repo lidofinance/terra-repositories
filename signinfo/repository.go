@@ -9,25 +9,18 @@ import (
 	"github.com/lidofinance/terra-fcd-rest-client/columbus-5/client/query"
 )
 
-type Repository interface {
-	Init(ctx context.Context, consAddr string) error
-	GetMissedBlockCounter() (float64, error)
-	GetTombstoned() bool
-	GetAddress() string
-}
-
-func New(apiClient *client.TerraRESTApis) *BaseRepository {
-	return &BaseRepository{
+func New(apiClient *client.TerraRESTApis) *Repository {
+	return &Repository{
 		apiClient: apiClient,
 	}
 }
 
-type BaseRepository struct {
+type Repository struct {
 	apiClient   *client.TerraRESTApis
 	signingInfo *query.SigningInfoOKBodyValSigningInfo
 }
 
-func (s *BaseRepository) Init(ctx context.Context, consAddr string) error {
+func (s *Repository) Init(ctx context.Context, consAddr string) error {
 	signingInfoResponse, err := s.apiClient.Query.SigningInfo(
 		&query.SigningInfoParams{
 			ConsAddress: consAddr,
@@ -44,7 +37,7 @@ func (s *BaseRepository) Init(ctx context.Context, consAddr string) error {
 	return nil
 }
 
-func (s *BaseRepository) GetMissedBlockCounter() (float64, error) {
+func (s *Repository) GetMissedBlockCounter() (float64, error) {
 	if s.signingInfo == nil || s.signingInfo.MissedBlocksCounter == "" { // no blocks is sent as "", not as "0".
 		return 0, nil
 	}
@@ -59,14 +52,14 @@ func (s *BaseRepository) GetMissedBlockCounter() (float64, error) {
 	return numMissedBlocks, nil
 }
 
-func (s *BaseRepository) GetTombstoned() bool {
+func (s *Repository) GetTombstoned() bool {
 	if s.signingInfo != nil {
 		return s.signingInfo.Tombstoned
 	}
 	return false
 }
 
-func (s *BaseRepository) GetAddress() string {
+func (s *Repository) GetAddress() string {
 	if s.signingInfo != nil {
 		return s.signingInfo.Address
 	}

@@ -16,22 +16,15 @@ var (
 	votePageSize  = 100.0
 )
 
-type Repository interface {
-	Get(ctx context.Context, proposalID int) (*models.GetProposalResult, error)
-	FetchVoting(ctx context.Context) ([]*models.GetProposalListResultProposals, error)
-	FetchDeposit(ctx context.Context) ([]*models.GetProposalListResultProposals, error)
-	GetVotes(ctx context.Context, proposalID int) ([]*models.GetProposalVotesResultVotes, error)
+func New(apiClient *client.TerraRESTApis) *Repository {
+	return &Repository{apiClient: apiClient}
 }
 
-func New(apiClient *client.TerraRESTApis) *BaseRepository {
-	return &BaseRepository{apiClient: apiClient}
-}
-
-type BaseRepository struct {
+type Repository struct {
 	apiClient *client.TerraRESTApis
 }
 
-func (r *BaseRepository) Get(ctx context.Context, proposalID int) (*models.GetProposalResult, error) {
+func (r *Repository) Get(ctx context.Context, proposalID int) (*models.GetProposalResult, error) {
 	resp, err := r.apiClient.Governance.GetV1GovProposalsProposalID(
 		&governance.GetV1GovProposalsProposalIDParams{
 			ProposalID: strconv.Itoa(proposalID),
@@ -51,16 +44,16 @@ func (r *BaseRepository) Get(ctx context.Context, proposalID int) (*models.GetPr
 }
 
 // FetchVoting fetches proposals with voting status
-func (r *BaseRepository) FetchVoting(ctx context.Context) ([]*models.GetProposalListResultProposals, error) {
+func (r *Repository) FetchVoting(ctx context.Context) ([]*models.GetProposalListResultProposals, error) {
 	return r.fetch(ctx, VotingStatus)
 }
 
 // FetchDeposit fetches proposals with deposit status
-func (r *BaseRepository) FetchDeposit(ctx context.Context) ([]*models.GetProposalListResultProposals, error) {
+func (r *Repository) FetchDeposit(ctx context.Context) ([]*models.GetProposalListResultProposals, error) {
 	return r.fetch(ctx, DepositStatus)
 }
 
-func (r *BaseRepository) fetch(ctx context.Context, status string) ([]*models.GetProposalListResultProposals, error) {
+func (r *Repository) fetch(ctx context.Context, status string) ([]*models.GetProposalListResultProposals, error) {
 	resp, err := r.apiClient.Governance.GetV1GovProposals(
 		&governance.GetV1GovProposalsParams{
 			Status:  &status,
@@ -79,7 +72,7 @@ func (r *BaseRepository) fetch(ctx context.Context, status string) ([]*models.Ge
 	return resp.GetPayload().Proposals, nil
 }
 
-func (r *BaseRepository) GetVotes(ctx context.Context, proposalID int) ([]*models.GetProposalVotesResultVotes, error) {
+func (r *Repository) GetVotes(ctx context.Context, proposalID int) ([]*models.GetProposalVotesResultVotes, error) {
 	page := 1.0
 	votes := make([]*models.GetProposalVotesResultVotes, 0)
 	for {
