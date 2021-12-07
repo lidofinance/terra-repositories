@@ -167,7 +167,7 @@ func validateVotingProposals(t *testing.T, proposals []*models.GetProposalListRe
 		t.Logf("validating %d voting proposals", len(proposals))
 		for _, proposal := range proposals {
 			t.Logf("validating voting proposal %s", *proposal.ID)
-			assert.Equalf(t, "Voting", *proposal.Status, "FetchVoting list result must be of Voting status")
+			assert.Equalf(t, VotingStatus, *proposal.Status, "FetchVoting list result must be of Voting status")
 			validateGetProposalListResult(t, proposal)
 		}
 	}
@@ -178,7 +178,7 @@ func validateDepositProposals(t *testing.T, proposals []*models.GetProposalListR
 		t.Logf("validating %d deposit proposals", len(proposals))
 		for _, proposal := range proposals {
 			t.Logf("validating deposit proposal %s", *proposal.ID)
-			assert.Equalf(t, "Deposit", *proposal.Status, "FetchDeposit list result must be of Deposit status")
+			assert.Equalf(t, DepositStatus, *proposal.Status, "FetchDeposit list result must be of Deposit status")
 			validateGetProposalListResult(t, proposal)
 		}
 	}
