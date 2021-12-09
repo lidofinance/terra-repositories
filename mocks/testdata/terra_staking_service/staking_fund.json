@@ -1,0 +1,29 @@
+{
+    "height": "5573337",
+    "result": {
+      "operator_address": "terravaloper123gn6j23lmexu0qx5qhmgxgunmjcqsx8gmsyse",
+      "consensus_pubkey": {
+        "type": "tendermint/PubKeyEd25519",
+        "value": "+ZyVnbU+i2cBt7Vn8Y38q43iMyAhxXX3ViPXPxkOU2o="
+      },
+      "status": 3,
+      "tokens": "25080275500689",
+      "delegator_shares": "25080275500689.000000000000000000",
+      "description": {
+        "moniker": "Staking Fund",
+        "identity": "805F39B20E881861",
+        "website": "https://staking.fund",
+        "details": "We've been actively engaging in the validating role for numerous novel Proof-of-Stake protocols since early 2018 and proving our commitment to secure decentralized blockchain networks with high availability and zero slashing. Operates https://terra.stake.id"
+      },
+      "unbonding_time": "1970-01-01T00:00:00Z",
+      "commission": {
+        "commission_rates": {
+          "rate": "0.100000000000000000",
+          "max_rate": "0.334000000000000000",
+          "max_change_rate": "0.012019042300000000"
+        },
+        "update_time": "2021-06-23T02:30:51.395922158Z"
+      },
+      "min_self_delegation": "1"
+    }
+  }

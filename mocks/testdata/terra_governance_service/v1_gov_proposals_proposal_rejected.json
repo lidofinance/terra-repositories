@@ -1,0 +1,82 @@
+{
+    "id": "5",
+    "proposer": {
+        "accountAddress": "terra1sjt0xtxy4rtmz7kxlvfmr06znspjknaj90lavs"
+    },
+    "type": "Text Proposal",
+    "status": "Rejected",
+    "submitTime": "2020-02-12T19:49:27.376Z",
+    "title": "Sort validators by self-delegation (skin in the game)",
+    "description": "Option to sort validators by self-delegation percentage in the staking section of Terra Station.\n\nThe percentage of Luna that a validator is prepared to self-delegate shows how much she is prepared to risk on her own operation and is an important signal for delegators choosing validators.",
+    "deposit": {
+        "depositEndTime": "2020-02-26T19:49:27.376Z",
+        "totalDeposit": [
+            {
+                "denom": "uluna",
+                "amount": "512000000"
+            }
+        ],
+        "minDeposit": [
+            {
+                "denom": "uluna",
+                "amount": "512000000"
+            }
+        ]
+    },
+    "vote": {
+        "id": "5",
+        "distribution": {
+            "No": "10617559227986",
+            "Yes": "23616900292983",
+            "Abstain": "7399166751797",
+            "NoWithVeto": "0"
+        },
+        "count": {
+            "No": 6,
+            "Yes": 20,
+            "Abstain": 4,
+            "NoWithVeto": 0
+        },
+        "total": "41633626272766.0000000000",
+        "votingEndTime": "2020-03-03T06:48:04.451Z",
+        "stakedLuna": "271489853479974.0000000000",
+        "voters": {
+            "terra10nxpnrcm78rlevvt28ztucwf6xcqts26yj4vfl": "Yes",
+            "terra123gn6j23lmexu0qx5qhmgxgunmjcqsx8g5ueq2": "Abstain",
+            "terra162t3yqa2mywtvmr6qv22hayjytzqckzylk5lck": "Yes",
+            "terra1a4xyusa48u9cx678cvx23jajh4ca6v8ec2pguu": "Yes",
+            "terra1audgfvmgt0js54p3s8kj3r40uwej6vy2trk7na": "No",
+            "terra1dcrq2xwuhea9hm5xfuydjuwgz6gm7vdjz34gv6": "Abstain",
+            "terra1e7y93fd0z32s2vqhxs272t0e53mp9ra2cf5l96": "Yes",
+            "terra1e82da9n6jz4t42eh0wn5hrt6hdmf7jyq8sufkp": "Yes",
+            "terra1f2z4q5kdelhfk7xq3xmxzlhp6ntrtzu659pl0s": "Yes",
+            "terra1f5hyt3tjjwe0xvrlnd0d9znrd9wqyezcjzl39u": "No",
+            "terra1gh7wpfpsjrqnash5uc84z4njt95y9g5nh7saj4": "No",
+            "terra1gkumn82kkj3cww28yp53agy7aluxv06fsngwu7": "Yes",
+            "terra1gv46mpzxkuc68fl6x2735xfe3uzxyna0x98sky": "Yes",
+            "terra1hg70rkal5d86fl57k0gc7de0rrk4klgs520rzt": "No",
+            "terra1jyjg55hzsh0f4xymy0kuuan30pp4q75ru0h35c": "Abstain",
+            "terra1kprce6kc08a6l03gzzh99hfpazfjeczfpd6td0": "Yes",
+            "terra1krvdnpgndl9e00w5vfs7avg9gff9c4qzj03e5t": "Yes",
+            "terra1mz38gfqk3q62kvxck889nf3xqz7q9jua0maazu": "Yes",
+            "terra1nwrksgv2vuadma8ygs8rhwffu2ygk4j24pxxx0": "Yes",
+            "terra1ptyzewnns2kn37ewtmv6ppsvhdnmeapvgeks28": "Yes",
+            "terra1qmrzf2hzytf6fpuppl4qjs79mev92c5ecch2j2": "Yes",
+            "terra1rf9xakxf97a49qa5svsf7yypjswzkutqfclur8": "Abstain",
+            "terra1rjetaseqwuhcd9s3c2s5zgp8kcr6u4zcj603as": "Yes",
+            "terra1sjt0xtxy4rtmz7kxlvfmr06znspjknaj90lavs": "Yes",
+            "terra1tkc5j3w76yde30s4he35ugupf7pgnlssp6ctqs": "Yes",
+            "terra1tusfpgvjrplqg2fm7wacy4slzjmnzswcfn9puj": "No",
+            "terra1upg95nlwkfkrq4hhjrn3k9s6ud0aqx36gwnlsn": "Yes",
+            "terra1v5hrqlv8dqgzvy0pwzqzg0gxy899rm4kdn0jp4": "Yes",
+            "terra1vwzu8ax0apk2s50nvh8hec7u8wa2qgdqrdc8mr": "Yes",
+            "terra1yad8pjqp93gvwkxa2aa5mh4vctzfs37eka279r": "No"
+        }
+    },
+    "content": [],
+    "tallyingParameters": {
+        "veto": "0.334000000000000000",
+        "quorum": "0.400000000000000000",
+        "threshold": "0.500000000000000000"
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "height": "5573344",
+    "result": {
+      "operator_address": "terravaloper13g7z3qq6f00qww3u4mpcs3xw5jhqwraswraapc",
+      "consensus_pubkey": {
+        "type": "tendermint/PubKeyEd25519",
+        "value": "udJs2LVd7BlJ00NvJhfze7LTDWXUcv6c9uVkZis2LcI="
+      },
+      "status": 3,
+      "tokens": "4081045981450",
+      "delegator_shares": "4082659310870.533797216254208034",
+      "description": {
+        "moniker": "everstakeone",
+        "identity": "EF5AC70C00BECEDC",
+        "website": "https://everstake.one",
+        "details": "Reliable and experienced staking service provider from Ukraine. Visit our website for more details."
+      },
+      "unbonding_time": "2019-12-06T09:24:32.016345735Z",
+      "commission": {
+        "commission_rates": {
+          "rate": "0.100000000000000000",
+          "max_rate": "0.200000000000000000",
+          "max_change_rate": "0.010000000000000000"
+        },
+        "update_time": "2019-11-08T16:47:05.763848396Z"
+      },
+      "min_self_delegation": "1"
+    }
+  }
