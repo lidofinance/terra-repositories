@@ -4,6 +4,8 @@ import (
 	"context"
 	"testing"
 
+	"github.com/lidofinance/terra-fcd-rest-client/columbus-5/client/query"
+
 	"github.com/lidofinance/terra-repositories/mocks"
 
 	"github.com/lidofinance/terra-fcd-rest-client/columbus-5/client"
@@ -43,8 +45,6 @@ func TestGetProposal(t *testing.T) {
 		}
 		repo := New(factory.NewDefaultClient())
 		for _, proposalID := range []int{
-			fcdTestDepositProposalID,
-			fcdTestVotingProposalID,
 			fcdTestPassedProposalID,
 			fcdTestRejectedProposalID,
 		} {
@@ -101,29 +101,11 @@ func TestFetchDeposit(t *testing.T) {
 
 func TestGetVotes(t *testing.T) {
 	t.Run("WithMock", func(t *testing.T) {
-		repo := New(&client.TerraRESTApis{Governance: &mocks.TerraGovernanceServiceMock{}})
+		repo := New(&client.TerraRESTApis{Query: &mocks.TerraQueryServiceMock{}})
 		votes, err := repo.GetVotes(context.Background(), mocks.TestGetProposalVotesID)
 		if assert.Nil(t, err) {
 			t.Logf("validating %d votes of proposal %d", len(votes), mocks.TestGetProposalVotesID)
 			validateGetVotesResult(t, votes)
-		}
-	})
-
-	t.Run("WithFCD", func(t *testing.T) {
-		if testing.Short() {
-			t.Skip("skipping test in short mode.")
-		}
-		repo := New(factory.NewDefaultClient())
-		for _, proposalID := range []int{
-			fcdTestVotingProposalID,
-			fcdTestPassedProposalID,
-			fcdTestRejectedProposalID,
-		} {
-			votes, err := repo.GetVotes(context.Background(), proposalID)
-			if assert.Nil(t, err) {
-				t.Logf("validating %d votes of proposal %d", len(votes), proposalID)
-				validateGetVotesResult(t, votes)
-			}
 		}
 	})
 }
@@ -220,18 +202,13 @@ func validateGetProposalListResult(t *testing.T, proposal *models.GetProposalLis
 
 // validateGetVotesResult validates each vote fields presence in accordance with the specification
 // defined required fields list.
-func validateGetVotesResult(t *testing.T, votes []*models.GetProposalVotesResultVotes) {
-	if len(votes) == 0 {
-		t.Error("votes amount must be more than 0")
+func validateGetVotesResult(t *testing.T, votes []*query.VotesOKBodyVotesItems0) {
+	if len(votes) != 200 {
+		t.Error("votes amount must be equal 200")
 		return
 	}
 	for _, vote := range votes {
-		assert.NotNilf(t, vote.Answer, "vote answer must not be empty")
-		if assert.NotNilf(t, vote.Voter, "voter must not be empty") {
-			assert.NotNilf(t, vote.Voter.AccountAddress, "voter account address must not be empty")
-			if vote.Voter.OperatorAddress != "" {
-				assert.NotNilf(t, vote.Voter.Moniker, "operator voter moniker must not be empty")
-			}
-		}
+		assert.NotNilf(t, vote.ProposalID, "vote answer must not be empty")
+		assert.NotNilf(t, vote.Voter, "voter must not be empty")
 	}
 }

@@ -5,6 +5,9 @@ import (
 	"fmt"
 	"strconv"
 
+	"github.com/go-openapi/strfmt"
+	"github.com/lidofinance/terra-fcd-rest-client/columbus-5/client/query"
+
 	"github.com/lidofinance/terra-fcd-rest-client/columbus-5/client"
 	"github.com/lidofinance/terra-fcd-rest-client/columbus-5/client/governance"
 	"github.com/lidofinance/terra-fcd-rest-client/columbus-5/models"
@@ -72,7 +75,39 @@ func (r *Repository) fetch(ctx context.Context, status string) ([]*models.GetPro
 	return resp.GetPayload().Proposals, nil
 }
 
-func (r *Repository) GetVotes(ctx context.Context, proposalID int) ([]*models.GetProposalVotesResultVotes, error) {
+func (r *Repository) GetVotes(ctx context.Context, proposalID int) ([]*query.VotesOKBodyVotesItems0, error) {
+	var paginationKey strfmt.Base64
+	limit := "1000"
+	votes := make([]*query.VotesOKBodyVotesItems0, 0)
+	for {
+		resp, err := r.apiClient.Query.Votes(
+			&query.VotesParams{
+				PaginationKey:   &paginationKey,
+				PaginationLimit: &limit,
+				ProposalID:      strconv.Itoa(proposalID),
+				Context:         ctx,
+			},
+		)
+		if err != nil {
+			return nil, fmt.Errorf("failed to get votes for proposal id = %d: %w", proposalID, err)
+		}
+
+		err = resp.GetPayload().Validate(nil)
+		if err != nil {
+			return nil, fmt.Errorf("failed to validate votes response for proposal id = %d: %w", proposalID, err)
+		}
+
+		votes = append(votes, resp.GetPayload().Votes...)
+		if resp.GetPayload().Pagination.NextKey.String() == "" {
+			break
+		}
+		paginationKey = resp.GetPayload().Pagination.NextKey
+	}
+	return votes, nil
+
+}
+
+func (r *Repository) GetVotesOld(ctx context.Context, proposalID int) ([]*models.GetProposalVotesResultVotes, error) {
 	page := 1.0
 	votes := make([]*models.GetProposalVotesResultVotes, 0)
 	for {

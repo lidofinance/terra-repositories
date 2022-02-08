@@ -19,6 +19,8 @@ const (
 	soundValidatorSigningInfoSampleFile      = "validator_signing_info_sound.json"
 	tombstonedValidatorSigningInfoSampleFile = "validator_signing_info_tombstoned.json"
 	delegatorDelegationsSampleFile           = "delegator_delegations_resp.json"
+	queryProposalsVotesPage1                 = "gov_proposal_votes_page1.json"
+	queryProposalsVotesPage2                 = "gov_proposal_votes_page2.json"
 )
 
 type TerraQueryServiceMock struct{}
@@ -513,7 +515,21 @@ func (s *TerraQueryServiceMock) VoteTargets(params *query.VoteTargetsParams, opt
 }
 
 func (s *TerraQueryServiceMock) Votes(params *query.VotesParams, opts ...query.ClientOption) (*query.VotesOK, error) {
-	return nil, fmt.Errorf("not implemented")
+	filename := queryProposalsVotesPage1
+	if params.PaginationKey.String() == "FCQ+djfCTlED/udx+oKXk7H1CrtY" {
+		filename = queryProposalsVotesPage2
+	}
+	data, err := readSample(terraQueryServiceSamplesFolder, filename)
+	if err != nil {
+		return nil, err
+	}
+	resp := &query.VotesOK{
+		Payload: &query.VotesOKBody{},
+	}
+	if err := json.Unmarshal(data, resp.Payload); err != nil {
+		return nil, fmt.Errorf("failed to unmarshal data to resp: %w", err)
+	}
+	return resp, nil
 }
 
 func (s *TerraQueryServiceMock) WasmParams(params *query.WasmParamsParams, opts ...query.ClientOption) (*query.WasmParamsOK, error) {
