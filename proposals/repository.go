@@ -16,7 +16,7 @@ import (
 var (
 	VotingStatus  = "Voting"
 	DepositStatus = "Deposit"
-	votePageSize  = 100.0
+	votePageSize  = "1000"
 )
 
 func New(apiClient *client.TerraRESTApis) *Repository {
@@ -77,13 +77,12 @@ func (r *Repository) fetch(ctx context.Context, status string) ([]*models.GetPro
 
 func (r *Repository) GetVotes(ctx context.Context, proposalID int) ([]*query.VotesOKBodyVotesItems0, error) {
 	var paginationKey strfmt.Base64
-	limit := "1000"
 	votes := make([]*query.VotesOKBodyVotesItems0, 0)
 	for {
 		resp, err := r.apiClient.Query.Votes(
 			&query.VotesParams{
 				PaginationKey:   &paginationKey,
-				PaginationLimit: &limit,
+				PaginationLimit: &votePageSize,
 				ProposalID:      strconv.Itoa(proposalID),
 				Context:         ctx,
 			},
@@ -105,34 +104,4 @@ func (r *Repository) GetVotes(ctx context.Context, proposalID int) ([]*query.Vot
 	}
 	return votes, nil
 
-}
-
-func (r *Repository) GetVotesOld(ctx context.Context, proposalID int) ([]*models.GetProposalVotesResultVotes, error) {
-	page := 1.0
-	votes := make([]*models.GetProposalVotesResultVotes, 0)
-	for {
-		resp, err := r.apiClient.Governance.GetV1GovProposalsProposalIDVotes(
-			&governance.GetV1GovProposalsProposalIDVotesParams{
-				ProposalID: strconv.Itoa(proposalID),
-				Limit:      &votePageSize,
-				Page:       &page,
-				Context:    ctx,
-			},
-		)
-		if err != nil {
-			return nil, fmt.Errorf("failed to get votes for proposal id = %d: %w", proposalID, err)
-		}
-
-		err = resp.GetPayload().Validate(nil)
-		if err != nil {
-			return nil, fmt.Errorf("failed to validate votes response for proposal id = %d: %w", proposalID, err)
-		}
-
-		votes = append(votes, resp.GetPayload().Votes...)
-		if *resp.GetPayload().TotalCnt <= *resp.GetPayload().Page*votePageSize {
-			break
-		}
-		page++
-	}
-	return votes, nil
 }
