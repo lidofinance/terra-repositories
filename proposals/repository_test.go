@@ -71,10 +71,8 @@ func TestFetchVoting(t *testing.T) {
 			t.Skip("skipping test in short mode.")
 		}
 		repo := New(factory.NewDefaultClient())
-		votings, err := repo.FetchVoting(context.Background())
-		if assert.Nil(t, err) {
-			validateVotingProposals(t, votings)
-		}
+		_, err := repo.FetchVoting(context.Background())
+		assert.Nil(t, err)
 	})
 }
 
@@ -102,7 +100,7 @@ func TestFetchDeposit(t *testing.T) {
 func TestGetVotes(t *testing.T) {
 	t.Run("WithMock", func(t *testing.T) {
 		repo := New(&client.TerraRESTApis{Query: &mocks.TerraQueryServiceMock{}})
-		votes, err := repo.GetVotes(context.Background(), mocks.TestGetProposalVotesID)
+		votes, err := repo.GetVotingProposalVotes(context.Background(), mocks.TestGetProposalVotesID)
 		if assert.Nil(t, err) {
 			t.Logf("validating %d votes of proposal %d", len(votes), mocks.TestGetProposalVotesID)
 			validateGetVotesResult(t, votes)

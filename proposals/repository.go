@@ -75,7 +75,7 @@ func (r *Repository) fetch(ctx context.Context, status string) ([]*models.GetPro
 	return resp.GetPayload().Proposals, nil
 }
 
-func (r *Repository) GetVotes(ctx context.Context, proposalID int) ([]*query.VotesOKBodyVotesItems0, error) {
+func (r *Repository) GetVotingProposalVotes(ctx context.Context, proposalID int) ([]*query.VotesOKBodyVotesItems0, error) {
 	var paginationKey strfmt.Base64
 	votes := make([]*query.VotesOKBodyVotesItems0, 0)
 	for {
