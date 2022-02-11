@@ -28,50 +28,6 @@ var bombayFCDEndpoint = factory.Endpoint{
 	Schemes: []string{bombayFCDScheme},
 }
 
-func TestV1Repository(t *testing.T) {
-	t.Run("WithMock", func(t *testing.T) {
-		repo := NewV1Repository(mocks.V1WhitelistedValidatorsContractAddress, &client.TerraRESTApis{
-			Staking: &mocks.TerraStakingService{},
-			Wasm:    &mocks.TerraWASMService{},
-		})
-		addresses, err := repo.GetValidatorsAddresses(context.Background())
-		if err != nil {
-			t.Fatalf("failed to get validator addresses: %v", err)
-		}
-		for _, validatorAddr := range addresses {
-			valInfo, err := repo.GetValidatorInfo(context.Background(), validatorAddr)
-			if assert.Nil(t, err) {
-				t.Logf("validating %s validator info", validatorAddr)
-				validateValidatorInfo(t, valInfo)
-			}
-		}
-	})
-
-	t.Run("WithFCD", func(t *testing.T) {
-		if testing.Short() {
-			t.Skip("skipping test in short mode.")
-		}
-		repo := NewV1Repository(hubContract, factory.NewDefaultClient())
-		addresses, err := repo.GetValidatorsAddresses(context.Background())
-		if err != nil {
-			t.Fatalf("failed to get validator addresses: %v", err)
-		}
-		wg := &sync.WaitGroup{}
-		for _, validatorAddr := range addresses {
-			wg.Add(1)
-			go func(addr string) {
-				defer wg.Done()
-				valInfo, err := repo.GetValidatorInfo(context.Background(), addr)
-				if assert.Nil(t, err) {
-					t.Logf("validating %s validator info", addr)
-					validateValidatorInfo(t, valInfo)
-				}
-			}(validatorAddr)
-		}
-		wg.Wait()
-	})
-}
-
 func TestV2Repository(t *testing.T) {
 	t.Run("WithMock", func(t *testing.T) {
 		repo := NewV2Repository(mocks.V2WhitelistedValidatorsContractAddress, &client.TerraRESTApis{

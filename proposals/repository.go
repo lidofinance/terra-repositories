@@ -5,6 +5,9 @@ import (
 	"fmt"
 	"strconv"
 
+	"github.com/go-openapi/strfmt"
+	"github.com/lidofinance/terra-fcd-rest-client/columbus-5/client/query"
+
 	"github.com/lidofinance/terra-fcd-rest-client/columbus-5/client"
 	"github.com/lidofinance/terra-fcd-rest-client/columbus-5/client/governance"
 	"github.com/lidofinance/terra-fcd-rest-client/columbus-5/models"
@@ -13,7 +16,7 @@ import (
 var (
 	VotingStatus  = "Voting"
 	DepositStatus = "Deposit"
-	votePageSize  = 100.0
+	votePageSize  = "1000"
 )
 
 func New(apiClient *client.TerraRESTApis) *Repository {
@@ -72,16 +75,16 @@ func (r *Repository) fetch(ctx context.Context, status string) ([]*models.GetPro
 	return resp.GetPayload().Proposals, nil
 }
 
-func (r *Repository) GetVotes(ctx context.Context, proposalID int) ([]*models.GetProposalVotesResultVotes, error) {
-	page := 1.0
-	votes := make([]*models.GetProposalVotesResultVotes, 0)
+func (r *Repository) GetVotingProposalVotes(ctx context.Context, proposalID int) ([]*query.VotesOKBodyVotesItems0, error) {
+	var paginationKey strfmt.Base64
+	votes := make([]*query.VotesOKBodyVotesItems0, 0)
 	for {
-		resp, err := r.apiClient.Governance.GetV1GovProposalsProposalIDVotes(
-			&governance.GetV1GovProposalsProposalIDVotesParams{
-				ProposalID: strconv.Itoa(proposalID),
-				Limit:      &votePageSize,
-				Page:       &page,
-				Context:    ctx,
+		resp, err := r.apiClient.Query.Votes(
+			&query.VotesParams{
+				PaginationKey:   &paginationKey,
+				PaginationLimit: &votePageSize,
+				ProposalID:      strconv.Itoa(proposalID),
+				Context:         ctx,
 			},
 		)
 		if err != nil {
@@ -94,10 +97,11 @@ func (r *Repository) GetVotes(ctx context.Context, proposalID int) ([]*models.Ge
 		}
 
 		votes = append(votes, resp.GetPayload().Votes...)
-		if *resp.GetPayload().TotalCnt <= *resp.GetPayload().Page*votePageSize {
+		if resp.GetPayload().Pagination.NextKey.String() == "" {
 			break
 		}
-		page++
+		paginationKey = resp.GetPayload().Pagination.NextKey
 	}
 	return votes, nil
+
 }
