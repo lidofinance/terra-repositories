@@ -48,7 +48,7 @@ require (
 	github.com/jmhodges/levigo v1.0.0 // indirect
 	github.com/josharian/intern v1.0.0 // indirect
 	github.com/libp2p/go-buffer-pool v0.0.2 // indirect
-	github.com/lidofinance/terra-fcd-rest-client v0.0.0-20211213162754-cf6489ae3534
+	github.com/lidofinance/terra-fcd-rest-client v0.0.0-20220419083951-2b8b1858bd5f
 	github.com/magiconair/properties v1.8.5 // indirect
 	github.com/mailru/easyjson v0.7.6 // indirect
 	github.com/matttproud/golang_protobuf_extensions v1.0.1 // indirect
