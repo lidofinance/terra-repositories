@@ -1,0 +1,92 @@
+{
+  "proposals": [
+    {
+      "proposal_id": "929",
+      "content": {
+        "@type": "/cosmos.distribution.v1beta1.CommunityPoolSpendProposal",
+        "title": "Relayer fee recovery (to block 7102688)",
+        "description": "IBC Relayers have been relaying IBC for several months out of their own pockets. \nThis proposal is to pay back the fees they have spent doing this so far.\nSee https://agora.terra.money/t/proposal-community-pool-spend-relayers-who-relay-terra/5040/18 for more details, and participants of the multi sig.\n",
+        "recipient": "terra15egkd745sz0mmsc2aest8ncdhff0s0ywmzpv0m",
+        "amount": [
+          {
+            "denom": "uluna",
+            "amount": "2022000000"
+          }
+        ]
+      },
+      "status": "PROPOSAL_STATUS_VOTING_PERIOD",
+      "final_tally_result": {
+        "yes": "203573538117248",
+        "abstain": "14326517875684",
+        "no": "2639760204",
+        "no_with_veto": "1348713"
+      },
+      "submit_time": "2022-04-11T23:07:34.274239747Z",
+      "deposit_end_time": "2022-04-25T23:07:34.274239747Z",
+      "total_deposit": [
+        {
+          "denom": "uluna",
+          "amount": "50000000"
+        }
+      ],
+      "voting_start_time": "2022-04-11T23:07:34.274239747Z",
+      "voting_end_time": "2022-04-18T23:07:34.274239747Z"
+    },
+    {
+      "proposal_id": "919",
+      "content": {
+        "@type": "/cosmos.gov.v1beta1.TextProposal",
+        "title": "ProtoFi Partnership Proposal",
+        "description": "ProtoFi Protocol Partnership Proposal https://agora.terra.money/t/proposal-protofi-protocol-partnership-proposal/4893"
+      },
+      "status": "PROPOSAL_STATUS_VOTING_PERIOD",
+      "final_tally_result": {
+        "yes": "193326378364629",
+        "abstain": "24078580862987",
+        "no": "27865506094",
+        "no_with_veto": "17250000"
+      },
+      "submit_time": "2022-04-10T22:28:22.506854776Z",
+      "deposit_end_time": "2022-04-24T22:28:22.506854776Z",
+      "total_deposit": [
+        {
+          "denom": "uluna",
+          "amount": "50000000"
+        }
+      ],
+      "voting_start_time": "2022-04-10T22:28:22.506854776Z",
+      "voting_end_time": "2022-04-17T22:28:22.506854776Z"
+    },
+    {
+      "proposal_id": "775",
+      "content": {
+        "@type": "/ibc.core.client.v1.ClientUpdateProposal",
+        "title": "Update expired sifchain ibc client",
+        "description": "Proposal to update the Sifchain IBC client which has expired.",
+        "subject_client_id": "07-tendermint-19",
+        "substitute_client_id": "07-tendermint-64"
+      },
+      "status": "PROPOSAL_STATUS_VOTING_PERIOD",
+      "final_tally_result": {
+        "yes": "208111843668925",
+        "abstain": "14498241867112",
+        "no": "112500000",
+        "no_with_veto": "4000000"
+      },
+      "submit_time": "2022-03-25T18:04:15.703458981Z",
+      "deposit_end_time": "2022-04-08T18:04:15.703458981Z",
+      "total_deposit": [
+        {
+          "denom": "uluna",
+          "amount": "50000000"
+        }
+      ],
+      "voting_start_time": "2022-03-25T18:04:15.703458981Z",
+      "voting_end_time": "2022-04-01T18:04:15.703458981Z"
+    }
+  ],
+  "pagination": {
+    "next_key": null,
+    "total": "3"
+  }
+}
