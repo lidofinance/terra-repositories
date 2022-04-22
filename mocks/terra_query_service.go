@@ -19,6 +19,8 @@ const (
 	soundValidatorSigningInfoSampleFile      = "validator_signing_info_sound.json"
 	tombstonedValidatorSigningInfoSampleFile = "validator_signing_info_tombstoned.json"
 	delegatorDelegationsSampleFile           = "delegator_delegations_resp.json"
+	queryProposalsDeposit                    = "gov_proposals_deposit.json"
+	queryProposalsVoting                     = "gov_proposals_voting.json"
 	queryProposalsVotesPage1                 = "gov_proposal_votes_page1.json"
 	queryProposalsVotesPage2                 = "gov_proposal_votes_page2.json"
 )
@@ -352,7 +354,23 @@ func (s *TerraQueryServiceMock) Proposal(params *query.ProposalParams, opts ...q
 }
 
 func (s *TerraQueryServiceMock) Proposals(params *query.ProposalsParams, opts ...query.ClientOption) (*query.ProposalsOK, error) {
-	return nil, fmt.Errorf("not implemented")
+	var filename string
+	if *params.ProposalStatus == "1" {
+		filename = queryProposalsDeposit
+	} else {
+		filename = queryProposalsVoting
+	}
+	data, err := readSample(terraQueryServiceSamplesFolder, filename)
+	if err != nil {
+		return nil, err
+	}
+	resp := &query.ProposalsOK{
+		Payload: &query.ProposalsOKBody{},
+	}
+	if err := json.Unmarshal(data, resp.Payload); err != nil {
+		return nil, fmt.Errorf("failed to unmarshal data to resp: %w", err)
+	}
+	return resp, nil
 }
 
 func (s *TerraQueryServiceMock) RawStore(params *query.RawStoreParams, opts ...query.ClientOption) (*query.RawStoreOK, error) {
