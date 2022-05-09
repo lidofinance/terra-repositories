@@ -23,23 +23,16 @@ func NewActiveSetValidatorsRepository(apiClient *client.TerraRESTApis) *ActiveSe
 func (r *ActiveSetValidatorsRepository) GetValidatorsAddresses(ctx context.Context) ([]string, error) {
 	var limit int64 = 130 // all validators
 	var status string = "BOND_STATUS_BONDED"
-	var buf = []string{}
-
-	params := staking.GetStakingValidatorsParams{
-		Limit:   &limit,
-		Status:  &status,
-		Context: ctx,
-	}
+	params := staking.GetStakingValidatorsParams{ Limit:   &limit, Status:  &status, Context: ctx }
 
 	resp, err := r.apiClient.Staking.GetStakingValidators(&params)
-
 	if err != nil {
 		return nil, fmt.Errorf("failed to get active validators set page: %w", err)
 	}
 
-	for _, v := range resp.Payload.Result {
+	var buf = []string{}
+	for _, v := range resp.Payload {
 		buf = append(buf, v.OperatorAddress)
 	}
-
 	return buf, nil
 }
